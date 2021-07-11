@@ -704,7 +704,8 @@ pip-selfcheck.json
 .ionide
 
 # End of https://www.toptal.com/developers/gitignore/api/python,codeio,virtualenv,django,unity,csharp,visualstudiocode,git
+
 # 여기서부턴 내 개인용
 
-개발사항.txt
 uploads/
+개인정리함/
