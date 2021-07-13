@@ -127,5 +127,5 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-MEDIA_ROOT = os.path.join(BASE_DIR, "uploads")
-MEDIA_URL = "/media/"
+MENU_ROOT = os.path.join(BASE_DIR, "uploads")
+MENU_URL = "/menu/"
