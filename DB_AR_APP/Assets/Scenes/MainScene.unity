@@ -6372,6 +6372,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45a2717e2c4def44491aeb49053badde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _timer: 1
   trackedImageManager: {fileID: 2127146490}
   _objectList:
   - {fileID: 1423915116}
