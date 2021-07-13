@@ -19,18 +19,64 @@ class AbstractItem(core_models.TimeStampedModel):
 
 
 # 브랜드이름
-class brandName(AbstractItem):
+class MenuName(AbstractItem):
     """  Brand Model Definition """
 
     class Meta:
-        verbose_name_plural = "Brand_ Name"
+        verbose_name_plural = "MenuName"
 
-
-# 메뉴이름
-class menuName(AbstractItem):
-    """ Menu Model Definition """
+class Nutrient(AbstractItem):
+    """ Nutrient Model Definition """
 
     class Meta:
-        verbose_name_plural = "menu"
+        verbose_name_plural = "Nutrient"
+
+class Allergy(AbstractItem):
+    """ Allergy Model Definition """
+
+    class Meta:
+        verbose_name_plural = "Allergy"
+
+class Ingredient(AbstractItem):
+    """ Ingredient Model Definition """
+
+    class Meta:
+        verbose_name_plural = "Ingredient"
 
 
+
+
+
+# 사진 데이터 등록하기 위함
+class Photo(core_models.TimeStampedModel):
+    
+    """ Photo Model Definition """
+    caption = models.CharField(max_length=80)
+    file = models.ImageField(upload_to="food_photos")
+    menu = models.ForeignKey("Menu", related_name="photos", on_delete=models.CASCADE)
+    def __str__(self):
+        return self.caption
+
+
+
+
+class Menu(core_models.TimeStampedModel):
+    """ Menu Model Definition """
+
+    #메뉴명, 설명, 가격, 칼로리
+    name = models.CharField(max_length = 140) #메뉴 이름 받기
+    description = models.TextField()
+    price = models.IntegerField()
+    kcal = models.IntegerField()
+
+    # 영양성분 묶음, 알레르기 묶음, 재료 묶음
+    nutrients = models.ManyToManyField("Nutrient", related_name="menus",blank=True)
+    allergies = models.ManyToManyField("Allergy", related_name="menus",blank=True)
+    ingredients = models.ManyToManyField("Ingredient", related_name="menus",blank=True)
+    
+
+    def __str__(self):
+        return self.name
+
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
