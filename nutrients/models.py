@@ -16,14 +16,14 @@ class AbstractItem(core_models.TimeStampedModel):
         return self.name
 
 
-class Carbohydrate(AbstractItem):
+class carbohydrate(AbstractItem):
     """  Carbohydrate Model Definition """
     
     class Meta:
         verbose_name_plural = "Carbohydrate"
 
 
-class Protein(AbstractItem):
+class protein(AbstractItem):
     """  Protein Model Definition """
     
     class Meta:

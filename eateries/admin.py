@@ -4,7 +4,7 @@ from . import models
 
 
 # Register your models here.
-@admin.register(models.brandName, models.MenuName)
+@admin.register(models.brandName, models.menuName)
 class ItemAdmin(admin.ModelAdmin):
     
     """ Item Admin Definition """

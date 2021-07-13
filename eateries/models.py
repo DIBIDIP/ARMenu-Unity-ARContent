@@ -17,16 +17,17 @@ class AbstractItem(core_models.TimeStampedModel):
         return self.name
 
 
+
 # 브랜드이름
 class brandName(AbstractItem):
     """  Brand Model Definition """
 
     class Meta:
-        verbose_name = "Brand_ Name"
+        verbose_name_plural = "Brand_ Name"
 
 
 # 메뉴이름
-class MenuName(AbstractItem):
+class menuName(AbstractItem):
     """ Menu Model Definition """
 
     class Meta:
