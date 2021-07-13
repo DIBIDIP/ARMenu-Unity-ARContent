@@ -1,3 +1,6 @@
 from django.shortcuts import render
+from django.core.paginator import Paginator
+from . import models
 
-# Create your views here.
+def all_eateries(request):
+    return render(request, 'mainpage.html')
