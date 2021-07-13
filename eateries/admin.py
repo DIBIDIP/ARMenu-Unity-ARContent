@@ -4,7 +4,7 @@ from . import models
 
 
 # Register your models here.
-@admin.register(models.brandName)
+@admin.register(models.brandName, models.MenuName)
 class ItemAdmin(admin.ModelAdmin):
     
     """ Item Admin Definition """
@@ -15,3 +15,4 @@ class ItemAdmin(admin.ModelAdmin):
         return obj.eateries.count()
 
     pass
+

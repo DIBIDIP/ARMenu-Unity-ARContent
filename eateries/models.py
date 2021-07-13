@@ -22,4 +22,14 @@ class brandName(AbstractItem):
     """  Brand Model Definition """
 
     class Meta:
-        verbose_name = "Brand Name"
+        verbose_name = "Brand_ Name"
+
+
+# 메뉴이름
+class MenuName(AbstractItem):
+    """ Menu Model Definition """
+
+    class Meta:
+        verbose_name_plural = "menu"
+
+
