@@ -25,3 +25,13 @@ MonoBehaviour:
     m_SpecifySize: 1
     m_Name: foodQR1
     m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 5421118285710521442
+      m_GuidHigh: 13122867314336705165
+    m_SerializedTextureGuid:
+      m_GuidLow: 12665422204154113644
+      m_GuidHigh: 4950647651204192376
+    m_Size: {x: 0.1, y: 0.1}
+    m_SpecifySize: 1
+    m_Name: foodQR2
+    m_Texture: {fileID: 0}
