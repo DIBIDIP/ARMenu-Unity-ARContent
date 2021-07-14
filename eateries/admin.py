@@ -3,29 +3,14 @@ from django.utils.html import mark_safe
 from . import models
 
 
-# Register your models here.
-@admin.register(models.MenuName)
-class ItemAdmin(admin.ModelAdmin):
-    
-    """ Item Admin Definition """
-    # 기본정보 띄우기 :: 메뉴이름, 가격, 칼로리
-    list_display = ("name", "price", "kcal")
-
-    def used_by(self, obj) :
-        return obj.eateries.count()
-
-    pass
-
 
 class PhotoInline(admin.TabularInline):
     
     model = models.Photo
 
-
-
     
 @admin.register(models.Menu)
-class RoomAdmin(admin.ModelAdmin):
+class MenuAdmin(admin.ModelAdmin):
 
     """ RoomAdmin Admin Definition """
 
@@ -45,21 +30,24 @@ class RoomAdmin(admin.ModelAdmin):
         ),
         (
             "More About the Space",
-            {"fields": ("eatenries", "allergies", "ingrdeients")},
+            {"fields": ("allergies", "ingredients")},
         ),
     )
 
+    # Home > Menus > menus에 보일 것들
     list_display = (
         "name",
         "price",
         "kcal",
     )
 
+    # Home > Menus > menus에서 우측 필터
     list_filter = (
         "allergies",
         "ingredients",
     )
 
+    
     filter_horizontal = ("allergies", "ingredients",)
 
 
@@ -73,6 +61,8 @@ class RoomAdmin(admin.ModelAdmin):
         return obj.photos.count()
 
     count_photos.short_description = "Photo Count"
+
+
 
 
 

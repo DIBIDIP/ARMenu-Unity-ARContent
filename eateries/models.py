@@ -44,7 +44,18 @@ class Ingredient(AbstractItem):
         verbose_name_plural = "Ingredient"
 
 
+class Price(AbstractItem):
+    """ Price Model Definition """
 
+    class Meta:
+        verbose_name_plural = "Price"
+
+
+class Kcal(AbstractItem):
+    """ Kcal Model Definition """
+
+    class Meta:
+        verbose_name_plural = "Kcal"
 
 
 # 사진 데이터 등록하기 위함
@@ -56,7 +67,6 @@ class Photo(core_models.TimeStampedModel):
     menu = models.ForeignKey("Menu", related_name="photos", on_delete=models.CASCADE)
     def __str__(self):
         return self.caption
-
 
 
 
@@ -73,7 +83,6 @@ class Menu(core_models.TimeStampedModel):
     nutrients = models.ManyToManyField("Nutrient", related_name="menus",blank=True)
     allergies = models.ManyToManyField("Allergy", related_name="menus",blank=True)
     ingredients = models.ManyToManyField("Ingredient", related_name="menus",blank=True)
-    
 
     def __str__(self):
         return self.name
