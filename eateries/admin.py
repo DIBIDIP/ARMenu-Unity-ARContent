@@ -4,8 +4,8 @@ from . import models
 
 
 
+
 class PhotoInline(admin.TabularInline):
-    
     model = models.Photo
 
     
@@ -29,6 +29,15 @@ class MenuAdmin(admin.ModelAdmin):
             },
         ),
         (
+            "nutrients information",
+            {
+                "fields": (
+
+                )
+            }
+
+        ),
+        (
             "More About the Space",
             {"fields": ("allergies", "ingredients")},
         ),
@@ -50,8 +59,6 @@ class MenuAdmin(admin.ModelAdmin):
     
     filter_horizontal = ("allergies", "ingredients",)
 
-
-
     def count_menus(self, obj):
         return obj.menus.count()
 
@@ -64,7 +71,18 @@ class MenuAdmin(admin.ModelAdmin):
 
 
 
+@admin.register(models.Ingredient, models.Allergy )
+class ItemAdmin(admin.ModelAdmin):
 
+    """ Itrem Admin Definition """
+
+    list_display = ("name", "used_by")
+
+    def used_by(self, obj) :
+        return obj.menus.count()
+    used_by.short_description= "첨가된 메뉴 수"
+
+    pass
 
 
 @admin.register(models.Photo)
