@@ -22,9 +22,8 @@ public class ARTrackedImg : MonoBehaviour
         // 오브젝트를 딕셔너리에 각각 추가
         foreach (GameObject obj in _objectList)
         {
-
             string tName = obj.name;
-            _prefabDict.Add(tName, obj); // Key 이름 : Value GameOBJ
+            _prefabDict.Add(tName, obj); // 오브젝트이름, object로 저장
         }
     }
 
@@ -48,6 +47,7 @@ public class ARTrackedImg : MonoBehaviour
                         GameObject tObj = _prefabDict[name];
                         tObj.SetActive(false);
                         tNumlist.Add(_trackedImg[i]);
+                        Debug.Log("타이머 종료, 오브젝트 삭제");
                     }
                     else
                     {
@@ -63,6 +63,7 @@ public class ARTrackedImg : MonoBehaviour
                     int num = _trackedImg.IndexOf(tNumlist[i]);
                     _trackedImg.Remove(_trackedImg[num]);
                     _trackedTimer.Remove(_trackedTimer[num]);
+                    Debug.Log("리스트 삭제");
                 }
             }
         }
@@ -72,12 +73,14 @@ public class ARTrackedImg : MonoBehaviour
     {
         // 스크립트 활성화 시
         trackedImageManager.trackedImagesChanged += ImageChanged;
+        Debug.Log("스크립트 활성화");
     }
 
     private void OnDisable()
     {
         // 스크립트 비 활성화 시
         trackedImageManager.trackedImagesChanged -= ImageChanged;
+        Debug.Log("스크립트 비 활성화");
     }
 
     private void ImageChanged(ARTrackedImagesChangedEventArgs eventArgs)
@@ -107,6 +110,7 @@ public class ARTrackedImg : MonoBehaviour
                 _trackedTimer[tIndex] = 0;
             }
             UpdateImage(trackedImage);
+            Debug.Log("Updated 상태");
         }
     }
 
@@ -118,5 +122,6 @@ public class ARTrackedImg : MonoBehaviour
         tObj.transform.position = trackedImage.transform.position;
         tObj.transform.rotation = trackedImage.transform.rotation;
         tObj.SetActive(true);
+        Debug.Log("이미지트래킹 활성화");
     }
 }

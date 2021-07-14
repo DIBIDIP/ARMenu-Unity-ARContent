@@ -1192,7 +1192,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4855487917725699489, guid: 7aaa5060ede511447b678d0dfd0c651d, type: 3}
       propertyPath: m_Name
-      value: pizza 1
+      value: food1
       objectReference: {fileID: 0}
     - target: {fileID: 4855487917725699489, guid: 7aaa5060ede511447b678d0dfd0c651d, type: 3}
       propertyPath: m_IsActive
