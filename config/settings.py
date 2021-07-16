@@ -33,6 +33,7 @@ DJANGO_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_seed'
 ]
 
 THIRD_PARTY_APPS = ["django_countries", "django_seed"]
