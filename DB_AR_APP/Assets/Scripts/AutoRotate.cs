@@ -8,6 +8,6 @@ public class AutoRotate : MonoBehaviour
     void Update()
     {
         float speed = degreePerSeconds * Time.deltaTime;
-        transform.Rotate(Vector3.up * speed);
+        gameObject.transform.Rotate(Vector3.up * speed);
     }
 }
