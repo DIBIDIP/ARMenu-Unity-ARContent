@@ -130,4 +130,7 @@ STATIC_URL = '/static/'
 MENU_ROOT = os.path.join(BASE_DIR, "uploads")
 MENU_URL = "/menu/"
 
+MEDIA_ROOT = os.path.join(BASE_DIR / "media")
+MEDIA_URL = '/media/"'
+
 django_heroku.settings(locals())
