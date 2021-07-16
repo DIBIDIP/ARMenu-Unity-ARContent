@@ -2,7 +2,7 @@
 
 
 ### 1. 개발환경을 설정
-+ pipfile 참고
++ pipfile, requirements 참고
 
 ------------------
 ### 2. App 설정
