@@ -25,12 +25,6 @@ class MenuName(AbstractItem):
     class Meta:
         verbose_name_plural = "MenuName"
 
-class Nutrient(AbstractItem):
-    """ Nutrient Model Definition """
-
-    class Meta:
-        verbose_name_plural = "Nutrient"
-
 
 class Allergy(AbstractItem):
     """ Allergy Model Definition """
@@ -79,32 +73,26 @@ class Menu(core_models.TimeStampedModel):
     price = models.IntegerField()
     description = models.TextField()
 
+
+    # 여기서 부터 영양정보
     kcal = models.IntegerField() # 1회당 칼로리
     size = models.IntegerField() # 탄수화물
-
     carbohydrate = models.IntegerField() # 탄수화물
     sugars = models.IntegerField() # 당
-
     protain = models.IntegerField() # 단백질
-
     fat = models.IntegerField() # 지방
     saturated_Fat = models.IntegerField() # 포화지방
     trans_Fat = models.IntegerField() # 트랜스지방
-    
     cholesterol = models.IntegerField() # 콜레스테롤
     sodium = models.IntegerField() # 나트륨
+    
+
+    #원재료는 한 칸에 작성하기, ',' 단위로 작성할 것을 권유해야 함
+    ingredients = models.TextField() #메뉴 원재료 종류
 
 
-
-
-    # 영양성분 묶음, 알레르기 묶음, 재료 묶음
-    nutrients = models.ManyToManyField("Nutrient", related_name="menus",blank=True)
-    
-    
-    
-    
+    # 알레르기 리스트에서 선택하기
     allergies = models.ManyToManyField("Allergy", related_name="menus",blank=True)
-    ingredients = models.ManyToManyField("Ingredient", related_name="menus",blank=True)
 
     def __str__(self):
         return self.name

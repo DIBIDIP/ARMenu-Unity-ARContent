@@ -7,6 +7,8 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
+
+import django_heroku
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -21,12 +23,9 @@ SECRET_KEY = 'i2*ln#gpqv-e5rwn2^5@yw4zg)fr1u21)buw3wd4rkzgac9pk9'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = ['*']
 
 # Application definition
-
 DJANGO_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -41,7 +40,6 @@ THIRD_PARTY_APPS = ["django_countries", "django_seed"]
 PROJECT_APPS = [
     "core.apps.CoreConfig",
     "eateries.apps.EateriesConfig",
-    "nutrients.apps.NutrientsConfig",
 ]
 
 INSTALLED_APPS = DJANGO_APPS + PROJECT_APPS
@@ -55,6 +53,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = "config.urls"
@@ -129,3 +128,5 @@ STATIC_URL = '/static/'
 
 MENU_ROOT = os.path.join(BASE_DIR, "uploads")
 MENU_URL = "/menu/"
+
+django_heroku.settings(locals())

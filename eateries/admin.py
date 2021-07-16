@@ -3,8 +3,6 @@ from django.utils.html import mark_safe
 from . import models
 
 
-
-
 class PhotoInline(admin.TabularInline):
     model = models.Photo
 
@@ -18,46 +16,58 @@ class MenuAdmin(admin.ModelAdmin):
 
     fieldsets = (
         (
-            "Basic Info",
+            "Basic Info: 기본정보 작성해주세요",
             {
                 "fields": (
                     "name",
                     "price",
-                    "kcal",
                     "description",
                 )
             },
         ),
         (
-            "nutrients information",
+            "nutrients information: 영양성분 작성",
             {
-                "fields": (
-
+                "fields": ( 
+                    "kcal",
+                    "size",
+                    "carbohydrate",
+                    "sugars",
+                    "protain",
+                    "fat",
+                    "saturated_Fat",
+                    "trans_Fat",
+                    "cholesterol",
+                    "sodium",
                 )
-            }
+            },
 
         ),
+
         (
-            "More About the Space",
-            {"fields": ("allergies", "ingredients")},
+            "알러지선택 및 원재료 작성 ",
+            {"fields": ("allergies", "ingredients",)},
         ),
+
+
     )
 
     # Home > Menus > menus에 보일 것들
     list_display = (
         "name",
         "price",
-        "kcal",
+        "kcal"
     )
 
     # Home > Menus > menus에서 우측 필터
-    list_filter = (
-        "allergies",
-        "ingredients",
-    )
+    #list_filter = (
+    #    "allergies",
+    #)
 
-    
-    filter_horizontal = ("allergies", "ingredients",)
+    #알러지 선택시 선택한 카테고리를 볼 수 있게 함
+    filter_horizontal = ("allergies",)
+
+
 
     def count_menus(self, obj):
         return obj.menus.count()
