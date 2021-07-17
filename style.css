@@ -1,47 +1,100 @@
-@import url('https://fonts.googleapis.com/css2?family=Gugi&display=swap');
-/* https://fonts.google.com/specimen/Gugi?subset=korean#glyphs */
-/* 해당 구글 폰트 적용 */
-@import url('https://fonts.googleapis.com/css2?family=Sunflower:wght@300;500;700&display=swap');
-/* https://fonts.google.com/specimen/Sunflower?subset=korean#standard-styles
-해당 구글 폰트 적용 */
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
 body
 {
     margin: 15px;;
 }
 a{
-    color:black;
+    color:white;
     text-decoration: none;
+}
+.gamachi
+{
+    color:tan;
+}
+.gukbap
+{
+    color:tan;
+}
+.mcdonald
+{
+    color:tan;
+}
+.momstouch
+{
+    color:tan;
+}
+.subway
+{
+    color:tan;
 }
 h1 
 {
-    font-family: 'Sunflower',sans-serif;
+    background-color: black; 
+    font-family: 'Nanum Gothic',sans-serif;
     font-size:45px;
     text-align:center;
-    border-bottom:3px solid grey;
+    border-bottom:3px solid #ffffff;
     margin:0;
     padding:20px;
 }
 h2
 {
-    font-family: 'Sunflower',sans-serif;
+    font-family: 'Nanum Gothic',sans-serif;
     padding:5px;
     font-size:30px;
-    color:grey;
-    border-bottom:3px solid grey;
+    color:black;
+    border-bottom:3px solid black;
+}
+h3
+{
+    font-family: 'Nanum Gothic',sans-serif;
+    font-size:30px;
+    color:black;
+    border-bottom:3px solid black; 
+    padding:5px;
+}
+h4
+{
+    font-family: 'Nanum Gothic',sans-serif;
+    font-size:30px;
+    color:black;
+    border-bottom:3px solid black;
+    padding:5px;
+}
+h5
+{
+    font-family: 'Nanum Gothic',sans-serif;
+    padding:5px;
+    font-size:30px;
+    color:black;
+    border-bottom:3px solid black;
+}
+#menu_background
+{
+    background-color: black;
+}
+h2
+{
+    font-family: 'Nanum Gothic',sans-serif;
+    padding:5px;
+    font-size:30px;
+    color:black;
+    border-bottom:3px solid black;
 }
 ol
 {
-    border-right:3px solid grey;
+    font-size:20px;
+    color:white;
+    /* border-right:3px solid grey; */
     width:300px;
     margin:5px;
-    padding:15px;
+    padding:25px;
 }
 li
 {
-    font-family: 'Gugi',cursive;
-    font-size:16px;
+    font-family: 'Nanum Gothic',sans-serif;
+    font-size:20px;
     font-weight: bold;
-    text-decoration: underline;
     padding:15px;
 }
 #grid
@@ -52,34 +105,32 @@ li
 #Mainpage
 {
     font-size:20px;
-    color:grey;
+    color:black;
 }
-
-#ingredient
+#menu
 {
-    overflow-x:auto;
+    font-size:25px;
+    border-bottom: 1px solid #ffffff;
 }
-table
+#menu_select
 {
-    font-family: 'Sunflower',sans-serif;
-    width:90%;
-    /* border-top:1px solid #444444;
-    border-bottom:1px solid #444444;
-    border-collapse: collapse; */
-    overflow-x:auto;
-    overflow-y:auto;
-    border-radius:16px;
-    box-shadow:inset 0 0 8px DodgerBlue;
+    padding-top:33px;
+    font-size:25px;
+    border-bottom: 1px solid #ffffff;
 }
 #Mainpage
 {
-    font-family: 'Sunflower',sans-serif;
+    font-family: 'Nanum Gothic',sans-serif;
 }
 #ingredient_table
 {
-    width:40%;
+    width:60%;
     overflow-x:auto;
     overflow-y:auto;
+}
+#ingredient
+{
+    overflow-x:auto;
 }
 #Allergy_table
 {
@@ -87,69 +138,87 @@ table
     overflow-x:auto;
     overflow-y:auto;
 }
-#ingredient_table_alot
+#ingredient_table_subway
 {
     width:70%;
     overflow-x:auto;
     overflow-y:auto;
 }
-th,td
-{
-    /* border-bottom: 1px solid #444444; */
-    padding:10px;
-    text-align:center;
-    /* border:1px solid grey;  */
-    overflow-x:auto;
-    overflow-y:auto;
-    border-radius:16px;
-    box-shadow:inset 0 0 8px DodgerBlue;
-}
-thead tr
-{
-    background-color:#0d47a0;
-    color:#ffffff;
-    overflow-x:auto;
-    overflow-y:auto;
-    border-radius:16px;
-    box-shadow:inset 0 0 8px DodgerBlue;
-}
-#mainpage
-{
-    width:45%;
-}
-tr
-{
-    font-weight: 550;
-    overflow-x:auto;
-    overflow-y:auto;
-    background-color:lightskyblue;
-    color:#ffffff;
-    border-radius:16px;
-    box-shadow:inset 0 0 8px DodgerBlue;
-}
-h3
-{
-    font-family: 'Sunflower',sans-serif;
-    font-size:30px;
-    color:grey;
-    border-bottom:3px solid grey; 
-    padding:5px;
-}
 #Nutrition_Information
 {
     overflow-x:auto;
 }
-h4
-{
-    font-family: 'Sunflower',sans-serif;
-    font-size:30px;
-    color:grey;
-    border-bottom:3px solid grey;
-    padding:5px;
-}
 #Allergy
 {
     overflow-x:auto;
+}
+table
+{
+    font-weight: bold;
+    padding-left:10px;
+    font-family: 'Nanum Gothic',sans-serif;
+    width:100%;
+    overflow-x:auto;
+    overflow-y:auto;
+}
+tr
+{
+    width:100%;
+    font-weight: bold;
+    padding-left:10px;
+    overflow-x:auto;
+    overflow-y:auto;
+    color:black;
+    box-shadow:inset 0 0 8px black;
+    color:white;
+    background-color: black;
+}
+th,td
+{
+    font-weight: bold;
+    font-family: 'Nanum Gothic',sans-serif;
+    padding-left:10px;
+    padding:10px;
+    text-align:center;
+    overflow-x:auto;
+    overflow-y:auto;
+    border:2px solid black;
+}
+thead tr
+{
+    font-family: 'Nanum Gothic',sans-serif;
+    padding-left:10px;
+    font-weight: bold;
+    background-color: tan;
+    color:black;
+    overflow-x:auto;
+    overflow-y:auto;
+    height:70px;
+}
+#mainpage
+{
+    font-family: 'Nanum Gothic',sans-serif;
+    width:35%;
+}
+#image_gamachi
+{
+    padding-left:10px;
+}
+#image_gukbap
+{
+    padding-left:10px;
+}
+#image_mcdonald
+{
+    padding-left:10px;
+}
+#image_momstouch
+{
+    padding-left:10px;
+}
+#image_subway
+{
+    padding-left:10px;
 }
 @media(max-width:780px)
 {
@@ -160,22 +229,6 @@ h4
     ol
     {
         border-right:none;
-    }
-    h1
-    {
-        border-bottom:none;
-    }
-    h2
-    {
-        border-bottom:none;
-    }
-    h3
-    {
-        border-bottom:none;
-    }
-    h4
-    {
-        border-bottom:none;
     }
     #ingredient
     {
