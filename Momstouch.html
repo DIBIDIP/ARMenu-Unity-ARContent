@@ -10,15 +10,22 @@
 <body>
     <h1><a href="Mainpage.html">DBLAB_AR MENU TABLE</a></h1>
     <div id="grid">
-        <ol>
-            <li><a href="Gamachi.html">가마치통닭</a></li>
-            <li><a href="Gukbap.html">돼지국밥</a></li>
-            <li><a href="Mcdonald.html">맥도날드(맥스파이시 상하이 버거)</a></li>
-            <li><a href="Momstouch.html"><font color="DodgerBlue">맘스터치(인크레더블 버거)</a></li></font>
-            <li><a href="Subway.html">서브웨이(터키 베이컨 아보카도)</a></li>
-            <img src="image/momstouch.png" width="300" height="300" alt="인크레더블버거" title="인크레더블버거 이미지">
-        </ol>
+        <div id="menu_background">
+            <ol>
+                <div id="menu_select">
+                    MENU
+                </div>
+                <br>
+                <li><a href="Gamachi.html">가마치통닭</a></li>
+                <li><a href="Gukbap.html">돼지국밥</a></li>
+                <li><a href="Mcdonald.html">맥도날드</a></li>
+                <li><a class="momstouch" href="Momstouch.html">맘스터치</a></li>
+                <li><a href="Subway.html">서브웨이</a></li>
+            </ol>
+        </div>
         <div>
+            <h5>이미지</h5>
+            <img id="image_momstouch" src="image/momstouch.png" width="250" height="180" alt="인크레더블버거" title="인크레더블버거 이미지">
             <h2>원재료</h2>
             <div id="ingredient_table">
                 <table>

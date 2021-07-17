@@ -10,30 +10,32 @@
 <body>
     <h1><a href="Mainpage.html">DBLAB_AR MENU TABLE</a></h1>
     <div id="grid">
-        <ol>
-            <li><a href="Gamachi.html"><font color="DodgerBlue">가마치통닭</font></a></li>
-            <li><a href="Gukbap.html">돼지국밥</a></li>
-            <li><a href="Mcdonald.html">맥도날드(맥스파이시 상하이 버거)</a></li>
-            <li><a href="Momstouch.html">맘스터치(인크레더블 버거)</a></li>
-            <li><a href="Subway.html">서브웨이(터키 베이컨 아보카도)</a></li>
-            <img src="image/gamachi.png" width="300" height="300" alt="가마치통닭" title="가마치통닭 이미지">
-        </ol>
+        <div id="menu_background">
+            <ol>
+                <div id="menu_select">
+                    MENU
+                </div>
+                <br>
+                <li><a class="gamachi" href="Gamachi.html">가마치통닭</a></li>
+                <li><a href="Gukbap.html">돼지국밥</a></li>
+                <li><a href="Mcdonald.html">맥도날드</a></li>
+                <li><a href="Momstouch.html">맘스터치</a></li>
+                <li><a href="Subway.html">서브웨이</a></li>
+            </ol>
+        </div>
         <div>
+            <h5>이미지</h5>
+            <img id="image_gamachi"src="image/gamachi.png" width="250" height="180" alt="가마치통닭" title="가마치통닭 이미지">
             <h2>원재료</h2>
             <div id="ingredient">
                 <table id="ingredient_table">
                     <tr>
                         <td>닭 한마리(국내산)</td>
-                    </tr>
-                    <tr>
                         <td>후추</td>
-                    </tr>
-                    <tr>
                         <td>마늘</td>
                     </tr>
                 </table>
             </div>
-            
             <h3>영양 정보(1마리 기준)</h3>
             <div id="Nutrition_Information">
                 <table>
@@ -44,7 +46,7 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td>1</td><td>1930</td><td>106</td><td>101</td><td>9</td><td>358</td><td>3300</td>
+                            <td>1</td><td>1930</td><td>106</td><td>101</td><td>23</td><td>358</td><td>3300</td>
                         </tr>
                     </tbody>
                 </table>
