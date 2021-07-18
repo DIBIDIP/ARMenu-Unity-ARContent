@@ -64,6 +64,11 @@ class Photo(core_models.TimeStampedModel):
         return self.caption
 
 
+class Video(models.Model):
+    title = models.CharField(max_length=200)
+    video_key = models.CharField(max_length=12)
+
+
 
 class Menu(core_models.TimeStampedModel):
     """ Menu Model Definition """
