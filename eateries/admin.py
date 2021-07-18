@@ -6,13 +6,17 @@ from . import models
 class PhotoInline(admin.TabularInline):
     model = models.Photo
 
+class VideoInline(admin.TabularInline):
+    model = models.Video
+
+
     
 @admin.register(models.Menu)
 class MenuAdmin(admin.ModelAdmin):
 
     """ RoomAdmin Admin Definition """
 
-    inlines = (PhotoInline,)
+    inlines = (PhotoInline, VideoInline)
 
     fieldsets = (
         (
@@ -103,3 +107,10 @@ class PhotoAdmin(admin.ModelAdmin):
     def get_thumbnail(self, obj):
         return mark_safe(f'<img width="50px" src="{obj.file.url}" />')
     get_thumbnail.short_description = "Thumnail"
+
+
+@admin.register(models.Video)
+class VideoAdmin(admin.ModelAdmin):
+    """ Vidio Admin Definition """
+
+    list_display = ('__str__', )

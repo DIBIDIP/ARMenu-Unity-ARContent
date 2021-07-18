@@ -58,15 +58,23 @@ class Photo(core_models.TimeStampedModel):
     
     """ Photo Model Definition """
     caption = models.CharField(max_length=80)
-    file = models.ImageField(upload_to="food_photos")
+    file = models.ImageField(upload_to="media/food_photos")
     menu = models.ForeignKey("Menu", related_name="photos", on_delete=models.CASCADE)
     def __str__(self):
         return self.caption
 
 
 class Video(models.Model):
-    title = models.CharField(max_length=200)
-    video_key = models.CharField(max_length=12)
+
+    """ Video Model Definition """
+
+    caption = models.CharField(max_length=80)
+    file = models.FileField(null=True, blank=True, upload_to="media/food_videos")
+    menu = models.ForeignKey("Menu", related_name="videos", on_delete=models.CASCADE)
+    
+    video_key = models.CharField(max_length=12) #유투브 영상 연결?
+    def __str__(self):
+        return self.caption
 
 
 
