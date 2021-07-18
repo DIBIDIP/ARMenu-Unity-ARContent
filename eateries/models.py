@@ -58,21 +58,21 @@ class Photo(core_models.TimeStampedModel):
     
     """ Photo Model Definition """
     caption = models.CharField(max_length=80)
-    file = models.ImageField(upload_to="media/food_photos")
+    file = models.ImageField(upload_to="media/food_photos", null=True)
     menu = models.ForeignKey("Menu", related_name="photos", on_delete=models.CASCADE)
     def __str__(self):
         return self.caption
 
 
-class Video(models.Model):
+class Video(core_models.TimeStampedModel):
 
     """ Video Model Definition """
 
     caption = models.CharField(max_length=80)
-    file = models.FileField(null=True, blank=True, upload_to="media/food_videos")
+    file = models.FileField(upload_to="media/food_videos", null=True)
     menu = models.ForeignKey("Menu", related_name="videos", on_delete=models.CASCADE)
     
-    video_key = models.CharField(max_length=12) #유투브 영상 연결?
+    # video_key = models.CharField(max_length=12) #유투브 영상 연결?
     def __str__(self):
         return self.caption
 
@@ -88,20 +88,20 @@ class Menu(core_models.TimeStampedModel):
 
 
     # 여기서 부터 영양정보
-    kcal = models.IntegerField() # 1회당 칼로리
-    size = models.IntegerField() # 탄수화물
-    carbohydrate = models.IntegerField() # 탄수화물
-    sugars = models.IntegerField() # 당
-    protain = models.IntegerField() # 단백질
-    fat = models.IntegerField() # 지방
-    saturated_Fat = models.IntegerField() # 포화지방
-    trans_Fat = models.IntegerField() # 트랜스지방
-    cholesterol = models.IntegerField() # 콜레스테롤
-    sodium = models.IntegerField() # 나트륨
+    kcal = models.IntegerField(blank=True) # 1회당 칼로리
+    size = models.IntegerField(blank=True) # 탄수화물
+    carbohydrate = models.IntegerField(blank=True) # 탄수화물
+    sugars = models.IntegerField(blank=True) # 당
+    protain = models.IntegerField(blank=True) # 단백질
+    fat = models.IntegerField(blank=True) # 지방
+    saturated_Fat = models.IntegerField(blank=True) # 포화지방
+    trans_Fat = models.IntegerField(blank=True) # 트랜스지방
+    cholesterol = models.IntegerField(blank=True) # 콜레스테롤
+    sodium = models.IntegerField(blank=True) # 나트륨
     
 
     #원재료는 한 칸에 작성하기, ',' 단위로 작성할 것을 권유해야 함
-    ingredients = models.TextField() #메뉴 원재료 종류
+    ingredients = models.TextField(blank=True) #메뉴 원재료 종류
 
 
     # 알레르기 리스트에서 선택하기
