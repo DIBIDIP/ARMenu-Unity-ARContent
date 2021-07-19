@@ -37,10 +37,9 @@ public class ARSelectionController : MonoBehaviour
                         // 컨트롤
                         SelectedObject(arObject);
                         Debug.Log(arObject.name + "선택됨");
-                        
-                        arObject.transform.gameObject.GetComponent<AutoRotate>().enabled = true;
-                        goWebButton.gameObject.SetActive(true);
+
                         goWebButton.GetComponent<Text>().text = arObject.name + "버튼";
+                        goWebButton.gameObject.SetActive(true);
                     }
                 }
             }
@@ -54,7 +53,6 @@ public class ARSelectionController : MonoBehaviour
             if (selected != current)
             { // 선택된 오브젝트와 현재 오브젝트가 다르면
                 current.Selected = false;
-                current.transform.gameObject.GetComponent<AutoRotate>().enabled = false; // 자동회전 비활성화
             }
             else
             {
