@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.XR.ARFoundation;
 
 public class ARSelectionController : MonoBehaviour
@@ -9,6 +10,8 @@ public class ARSelectionController : MonoBehaviour
     private ARObject[] arObjects;
     [SerializeField]
     private Camera arCamera;
+    [SerializeField]
+    private Button goWebButton;
 
     private Vector2 touchPosition = default;
     private void Awake()
@@ -34,6 +37,10 @@ public class ARSelectionController : MonoBehaviour
                         // 컨트롤
                         SelectedObject(arObject);
                         Debug.Log(arObject.name + "선택됨");
+                        
+                        arObject.transform.gameObject.GetComponent<AutoRotate>().enabled = true;
+                        goWebButton.gameObject.SetActive(true);
+                        goWebButton.GetComponent<Text>().text = arObject.name + "버튼";
                     }
                 }
             }
@@ -44,10 +51,13 @@ public class ARSelectionController : MonoBehaviour
     {
         foreach (ARObject current in arObjects)
         {
-            if(selected != current){ // 선택된 오브젝트와 현재 오브젝트가 다르면
+            if (selected != current)
+            { // 선택된 오브젝트와 현재 오브젝트가 다르면
                 current.Selected = false;
+                current.transform.gameObject.GetComponent<AutoRotate>().enabled = false; // 자동회전 비활성화
             }
-            else{
+            else
+            {
                 current.Selected = true;
             }
         }
