@@ -772,6 +772,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9206664693360329753, guid: 3ad56dbc428729a499148abb1f1d7135, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3ad56dbc428729a499148abb1f1d7135, type: 3}
 --- !u!4 &879815732 stripped
@@ -791,7 +795,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 879815733}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ff0c1e27439778f4fb772953efcc78d9, type: 3}
   m_Name: 
@@ -1331,7 +1335,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1423915116}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2bf4e99caf563cf419d46d1b08531c52, type: 3}
   m_Name: 
@@ -1349,7 +1353,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff0c1e27439778f4fb772953efcc78d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsSelected: 1
+  IsSelected: 0
+--- !u!135 &1423915119
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1423915116}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1490691322
 GameObject:
   m_ObjectHideFlags: 0
@@ -6469,9 +6486,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45a2717e2c4def44491aeb49053badde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _timer: 1
-  trackedImageManager: {fileID: 2127146490}
-  _objectList:
+  trackedPrefabs:
   - {fileID: 1423915116}
   - {fileID: 879815733}
 --- !u!114 &2127146488
@@ -6481,7 +6496,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2127146484}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e1760703bbd54c04488a8d10600262ab, type: 3}
   m_Name: 
@@ -6495,7 +6510,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2127146484}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7ab0e80cee9cc1d44928bfe488dd1e2d, type: 3}
   m_Name: 
@@ -6514,7 +6529,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_SerializedLibrary: {fileID: 11400000, guid: 5490e9ec67e64d941bbf493d57a1813c, type: 2}
-  m_MaxNumberOfMovingImages: 2
+  m_MaxNumberOfMovingImages: 1
   m_TrackedImagePrefab: {fileID: 0}
 --- !u!114 &2127146491
 MonoBehaviour:
