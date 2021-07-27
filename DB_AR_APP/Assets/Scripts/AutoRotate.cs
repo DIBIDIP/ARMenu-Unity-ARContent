@@ -4,11 +4,15 @@ using UnityEngine;
 
 public class AutoRotate : MonoBehaviour
 {
-    public float degreePerSeconds = 5.0f;
+    [SerializeField]
+    private float degreePerSeconds = 10.0f;
+
+    // 회전량
+    private float rotationDeltaY = 0.0f; 
     void Update()
     {
-        float speed = degreePerSeconds * Time.deltaTime;
-        gameObject.transform.Rotate(Vector3.up * speed, Space.World);
+        this.rotationDeltaY += (degreePerSeconds * Time.deltaTime);
+        transform.localEulerAngles = new Vector3(transform.rotation.x, rotationDeltaY, transform.rotation.z);
     }
 
     private void OnEnable() {

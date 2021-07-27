@@ -34,20 +34,8 @@ public class ARSelectionController : MonoBehaviour
                     ARObject arObject = hitObject.transform.GetComponent<ARObject>();
                     if (arObject != null)
                     {
-                        if(arObject.Selected){ // 다시 선택시 선택해제
-                            arObject.Selected = false;
-                            goWebButton.gameObject.SetActive(false);
-
-                            Debug.Log(arObject.name + "선택해제");
-                            return;
-                        }
                         // 컨트롤
                         SelectedObject(arObject);
-                        Debug.Log(arObject.name + "선택됨");
-
-                        goWebButton.GetComponent<Text>().text = arObject.name + "버튼";
-                        goWebButton.gameObject.SetActive(true);
-                        Debug.Log("버튼 활성화");
                     }
                 }
             }
@@ -55,17 +43,20 @@ public class ARSelectionController : MonoBehaviour
     }
 
     private void SelectedObject(ARObject selected)
-    {
-        foreach (ARObject current in arObjects)
-        {
-            if (selected != current)
-            { // 선택된 오브젝트와 현재 오브젝트가 다르면
-                current.Selected = false;
-            }
-            else
-            {
-                current.Selected = true;
-            }
+    {   
+        // 선택 해제
+        if(selected.Selected){ 
+            selected.Selected = false;
+            goWebButton.gameObject.SetActive(false);
+
+            Debug.Log(selected.name + "선택해제");
+            return;
         }
+        // 선택 설정
+        selected.Selected = true;
+
+        goWebButton.gameObject.SetActive(true);
+        Debug.Log("버튼 활성화");
+        Debug.Log("arObject.Selected : " + selected.Selected);
     }
 }

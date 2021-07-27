@@ -193,7 +193,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uC6F9\uC73C\uB85C"
+  m_Text: "\uC815\uBCF4"
 --- !u!222 &117025340
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1298,11 +1298,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5199960085686490907, guid: 7aaa5060ede511447b678d0dfd0c651d, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5199960085686490907, guid: 7aaa5060ede511447b678d0dfd0c651d, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5199960085686490907, guid: 7aaa5060ede511447b678d0dfd0c651d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1380,7 +1380,7 @@ GameObject:
   - component: {fileID: 1490691324}
   - component: {fileID: 1490691323}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: UI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
