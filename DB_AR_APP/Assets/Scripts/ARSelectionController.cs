@@ -12,7 +12,12 @@ public class ARSelectionController : MonoBehaviour
     [SerializeField]
     private Camera arCamera;
     [SerializeField]
-    private Button goWebButton;
+    private Button ARButton;
+
+    [SerializeField]
+    private Sprite PlusImage;
+    [SerializeField]
+    private Sprite InfoImage;
 
     private Vector2 touchPosition = default;
     private void Awake()
@@ -52,12 +57,21 @@ public class ARSelectionController : MonoBehaviour
         // 선택 해제
         if(selected.Selected){ 
             selected.Selected = false;
-            goWebButton.gameObject.SetActive(false);
             return;
         }
         // 선택 설정
         selected.Selected = true;
+    }
 
-        goWebButton.gameObject.SetActive(true);
+    public bool ChangeButtonImage(bool Selected){
+        // 이미지가 인식되고 있지 않으면 false 반환
+        if (!Selected){
+            // 인식되지 않으면, 기존 Plus 이미지로 변경
+            ARButton.GetComponent<Image>().sprite = PlusImage;
+            return false; 
+        }
+        // 인식되고 있으면, Info 이미지로 변경
+        ARButton.GetComponent<Image>().sprite = InfoImage;
+        return true;
     }
 }
