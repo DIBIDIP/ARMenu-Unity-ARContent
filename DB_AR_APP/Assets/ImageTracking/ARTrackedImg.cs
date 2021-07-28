@@ -3,11 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
+using UnityEngine.UI;
 
 public class ARTrackedImg : MonoBehaviour
 {   
     [SerializeField]
     private GameObject[] trackedPrefabs; // 이미지를 인식했을 때 출력되는 프리팹 목록
+
+    [SerializeField]
+    private Button goWebButton;
 
     // 이미지를 인식했을 떄 출력되는 오브젝트 목록
     private Dictionary<string, GameObject> spawnedObjects = new Dictionary<string, GameObject>();
@@ -41,6 +45,7 @@ public class ARTrackedImg : MonoBehaviour
         // 카메라에 이미지가 인식되었을 때
         foreach(var trackedImage in eventArgs.added){
             UpdateImage(trackedImage);
+            Debug.Log("이미지 트래킹 시작");
         }
 
         // 카메라에 이미지가 인식되어 업데이트되고 있을 때
@@ -50,7 +55,10 @@ public class ARTrackedImg : MonoBehaviour
 
         // 인식되어 있는 이미지가 카메라에서 사라졌을 때
         foreach(var trackedImage in eventArgs.removed){
-            spawnedObjects[trackedImage.name].SetActive(false); // 비활성화
+            Debug.Log("이미지 트래킹 해제");
+            // 비활성화
+            spawnedObjects[trackedImage.name].SetActive(false); 
+            goWebButton.gameObject.SetActive(false);            
         }
     }
 

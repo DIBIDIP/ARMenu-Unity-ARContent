@@ -35,3 +35,23 @@ MonoBehaviour:
     m_SpecifySize: 1
     m_Name: food2
     m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 4795519726001399713
+      m_GuidHigh: 18324909070564094358
+    m_SerializedTextureGuid:
+      m_GuidLow: 11435863323970929235
+      m_GuidHigh: 9062925611591423643
+    m_Size: {x: 0.1, y: 0.1}
+    m_SpecifySize: 1
+    m_Name: food3
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 5243218005042194010
+      m_GuidHigh: 16545237541436624790
+    m_SerializedTextureGuid:
+      m_GuidLow: 5927961551266263844
+      m_GuidHigh: 15118307788642451691
+    m_Size: {x: 0.1, y: 0.1}
+    m_SpecifySize: 1
+    m_Name: food4
+    m_Texture: {fileID: 0}

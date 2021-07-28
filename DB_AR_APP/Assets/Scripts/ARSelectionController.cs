@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.XR.ARFoundation;
+using UnityEngine.EventSystems; 
 
 public class ARSelectionController : MonoBehaviour
 {
@@ -22,6 +23,10 @@ public class ARSelectionController : MonoBehaviour
     {
         if (Input.touchCount > 0)
         {
+            
+            if(EventSystem.current.IsPointerOverGameObject(0)){ // UI 클릭할 시 
+                return;
+            }
             Touch touch = Input.GetTouch(0);
 
             touchPosition = touch.position;
@@ -48,15 +53,11 @@ public class ARSelectionController : MonoBehaviour
         if(selected.Selected){ 
             selected.Selected = false;
             goWebButton.gameObject.SetActive(false);
-
-            Debug.Log(selected.name + "선택해제");
             return;
         }
         // 선택 설정
         selected.Selected = true;
 
         goWebButton.gameObject.SetActive(true);
-        Debug.Log("버튼 활성화");
-        Debug.Log("arObject.Selected : " + selected.Selected);
     }
 }
