@@ -70,13 +70,11 @@ public class ARTrackedImg : MonoBehaviour
             trackedObject.transform.rotation = trackedImage.transform.rotation;
             // 활성화
             trackedObject.SetActive(true);
-            
+
             // UI 버튼 정보 이미지로 변경
-            gameObject.GetComponent<ARSelectionController>().ChangeButtonImage(true);
+            // gameObject.GetComponent<ARSelectionController>().ChangeButtonImage(true);
         }else{
             trackedObject.SetActive(false);
-            // UI 버튼 추가 이미지로 변경
-            gameObject.GetComponent<ARSelectionController>().ChangeButtonImage(false);
         }
     }
 }

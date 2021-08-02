@@ -57,10 +57,24 @@ public class ARSelectionController : MonoBehaviour
         // 선택 해제
         if(selected.Selected){ 
             selected.Selected = false;
+            // AR 오브젝트 선택 시 해당하는 오브젝트 정보 버튼 활성화/비활성화
+            ChangeButtonImage(false);
             return;
+        }
+        // 오브젝트가 여러개 있을 시, 하나의 오브젝트만 선택되게 한다
+        foreach (ARObject current in arObjects){
+            // 선택한 오브젝트가 아닌 오브젝트들은 false를 준다.
+            if(current != selected){
+                current.Selected = false;
+            }
+            else{
+                current.Selected = true;
+                Debug.Log(selected.Selected + "선택한 오브젝트 상태");
+            }
         }
         // 선택 설정
         selected.Selected = true;
+        ChangeButtonImage(true);
     }
 
     public bool ChangeButtonImage(bool Selected){
