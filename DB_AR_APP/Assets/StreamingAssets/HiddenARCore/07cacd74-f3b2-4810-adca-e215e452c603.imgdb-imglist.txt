@@ -1,0 +1,4 @@
+8ee7a3814b6b4157881c30d5bd9d9bce|C:\projects\db\DB_AR_APP\Assets\Resource\QR\foodQR1.png|0.1
+c9267462ae5b4b3b8daa9f614bca1db6|C:\projects\db\DB_AR_APP\Assets\Resource\QR\foodQR2.png|0.1
+75b127a11bc8428d96714eccb5274ffe|C:\projects\db\DB_AR_APP\Assets\Resource\QR\foodQR3.png|0.1
+ee78e65aa6fe48c3968fc92de27d9ce5|C:\projects\db\DB_AR_APP\Assets\Resource\QR\foodQR4.png|0.1
