@@ -13,6 +13,9 @@ public class ARTrackedImg : MonoBehaviour
     private Dictionary<string, GameObject> spawnedObjects = new Dictionary<string, GameObject>();
     private ARTrackedImageManager trackedImageManager;
 
+    [SerializeField]
+    private Button arButton; // UI 버튼
+
     private void Awake()
     {
         // AR Session Origin 오브젝트에 컴포넌트로 적용했을 때 사용 가능
@@ -42,6 +45,7 @@ public class ARTrackedImg : MonoBehaviour
         foreach(var trackedImage in eventArgs.added){
             Debug.Log("이미지 트래킹 시작");
             UpdateImage(trackedImage);
+            // TODO: 이미지 트래킹 시, ARButton 비활성화 한다.
         }
 
         // 카메라에 이미지가 인식되어 업데이트되고 있을 때 (프레임당 갱신함)
@@ -54,6 +58,10 @@ public class ARTrackedImg : MonoBehaviour
             Debug.Log("이미지 트래킹 해제");
             // 비활성화
             spawnedObjects[trackedImage.name].SetActive(false); 
+            // TODO: 해제 시에 AR Obeject Seleted 또한 해제해야함, ARButton 활성화
+            // 트래킹 해제 시
+            gameObject.GetComponent<ARSelectionController>().SelectedAllFalse();
+            arButton.gameObject.SetActive(true);
         }
     }
 
@@ -62,7 +70,8 @@ public class ARTrackedImg : MonoBehaviour
     {
         string name = trackedImage.referenceImage.name;
         GameObject trackedObject =spawnedObjects[name];
-
+        // 트래킹된 오브젝트의 상태를 가져온다.
+        bool Selected = trackedObject.GetComponent<ARObject>().Selected;
         // 이미지의 추적 상태가 추적중(Tracking) 일 때
         if ( trackedImage.trackingState == TrackingState.Tracking){
             // 이미지 위치로 계속 따라다님

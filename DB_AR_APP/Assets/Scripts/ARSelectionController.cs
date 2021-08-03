@@ -13,6 +13,8 @@ public class ARSelectionController : MonoBehaviour
     private Camera arCamera;
     [SerializeField]
     private Button ARButton;
+    [SerializeField]
+    private Button DeleteButton;
 
     [SerializeField]
     private Sprite PlusImage;
@@ -59,6 +61,7 @@ public class ARSelectionController : MonoBehaviour
             selected.Selected = false;
             // AR 오브젝트 선택 시 해당하는 오브젝트 정보 버튼 활성화/비활성화
             ChangeButtonImage(false);
+            DeleteObjectButton(false);
             return;
         }
         // 오브젝트가 여러개 있을 시, 하나의 오브젝트만 선택되게 한다
@@ -72,11 +75,47 @@ public class ARSelectionController : MonoBehaviour
                 Debug.Log(selected.Selected + "선택한 오브젝트 상태");
             }
         }
-        // 선택 설정
+        // 선택에 따라 동작
         selected.Selected = true;
         ChangeButtonImage(true);
+        // 선택 시 
+        ARButton.gameObject.SetActive(true);
+        // TODO : 오브젝트 삭제 버튼 활성화
+        DeleteObjectButton(true);
+    }
+    // 선택된 오브젝트를 삭제합니다.
+    public void DeleteObject(){
+        // 오브젝트들 중 선택된 오브젝트를 찾습니다.
+        foreach (ARObject obj in arObjects){
+            // 선택된 오브젝트를 비활성화합니다.
+            if(obj.Selected){
+                obj.gameObject.SetActive(false);
+                Debug.Log(obj.name + "비활성화됨");
+            }
+        }
+        
     }
 
+    // 오브젝트 삭제 버튼을 비/활성화 합니다.
+    public bool DeleteObjectButton(bool Selected){
+        // 선택되지 않으면 비활성화
+        if(!Selected){
+            DeleteButton.gameObject.SetActive(false);
+            return false;
+        }
+        // 선택되었으면 활성화
+        DeleteButton.gameObject.SetActive(true);
+        return true;
+    }
+    
+    // 모든 선택을 해제 합니다.
+    public void SelectedAllFalse(){
+        foreach (ARObject obj in arObjects){
+            obj.Selected = false;
+            ChangeButtonImage(false);
+        }
+    }
+    // UI 버튼의 이미지를 선택에 따라 변경합니다.
     public bool ChangeButtonImage(bool Selected){
         // 이미지가 인식되고 있지 않으면 false 반환
         if (!Selected){

@@ -19,7 +19,7 @@ public class ARPlaceOnPlane : MonoBehaviour
     void Update()
     {
         //UpdateCenterObject(); 
-        PlaceObjectByTouch();
+        //PlaceObjectByTouch();
     }
 
     public void PlaceObjectByButton(){
@@ -62,8 +62,8 @@ public class ARPlaceOnPlane : MonoBehaviour
         if (hits.Count > 0)
         {
             Pose placementPose = hits[0].pose;
-            // Obj 배치
             placeObject.SetActive(true);
+            // 위치 설정
             placeObject.transform.SetPositionAndRotation(placementPose.position, placementPose.rotation);
         }
         else
