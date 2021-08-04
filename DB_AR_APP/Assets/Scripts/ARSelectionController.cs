@@ -91,6 +91,8 @@ public class ARSelectionController : MonoBehaviour
             if(obj.Selected){
                 obj.gameObject.SetActive(false);
                 Debug.Log(obj.name + "비활성화됨");
+                SelectedAllFalse(); // 선택해제
+                // 삭제 버튼 비활성화
             }
         }
         
@@ -110,9 +112,10 @@ public class ARSelectionController : MonoBehaviour
     
     // 모든 선택을 해제 합니다.
     public void SelectedAllFalse(){
+        ChangeButtonImage(false);
+        DeleteObjectButton(false);
         foreach (ARObject obj in arObjects){
             obj.Selected = false;
-            ChangeButtonImage(false);
         }
     }
     // UI 버튼의 이미지를 선택에 따라 변경합니다.
