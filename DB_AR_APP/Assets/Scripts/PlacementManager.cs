@@ -29,7 +29,7 @@ public class PlacementManager : MonoBehaviour
         if(hits.Count > 0){
             transform.position = hits[0].pose.position;
             transform.rotation = hits[0].pose.rotation;
-            // 포인터가 죽어있으면
+            // 포인터가 죽어있으면 살림
             if(!pointObject.activeInHierarchy){
                 pointObject.SetActive(true);
             }

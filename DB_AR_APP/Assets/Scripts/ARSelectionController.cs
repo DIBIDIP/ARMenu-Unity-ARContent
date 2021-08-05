@@ -54,7 +54,7 @@ public class ARSelectionController : MonoBehaviour
         }
     }
 
-    private void SelectedObject(ARObject selected)
+    public void SelectedObject(ARObject selected)
     {   
         // 선택 해제
         if(selected.Selected){ 
@@ -91,8 +91,7 @@ public class ARSelectionController : MonoBehaviour
             if(obj.Selected){
                 obj.gameObject.SetActive(false);
                 Debug.Log(obj.name + "비활성화됨");
-                SelectedAllFalse(); // 선택해제
-                // 삭제 버튼 비활성화
+                deSelectedAll(); // 선택해제
             }
         }
         
@@ -111,9 +110,11 @@ public class ARSelectionController : MonoBehaviour
     }
     
     // 모든 선택을 해제 합니다.
-    public void SelectedAllFalse(){
+    public void deSelectedAll(){
+        // 선택 관련 모두 해제
         ChangeButtonImage(false);
         DeleteObjectButton(false);
+        // 모든 오브젝트 선택 해제
         foreach (ARObject obj in arObjects){
             obj.Selected = false;
         }

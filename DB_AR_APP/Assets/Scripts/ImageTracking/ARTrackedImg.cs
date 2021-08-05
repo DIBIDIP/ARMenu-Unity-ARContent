@@ -46,6 +46,8 @@ public class ARTrackedImg : MonoBehaviour
             Debug.Log("이미지 트래킹 시작");
             UpdateImage(trackedImage);
             // TODO: 이미지 트래킹 시, ARButton 비활성화 한다.
+            // TODO: 트래킹 시, 선택관련 활성화
+
         }
 
         // 카메라에 이미지가 인식되어 업데이트되고 있을 때 (프레임당 갱신함)
@@ -60,7 +62,7 @@ public class ARTrackedImg : MonoBehaviour
             spawnedObjects[trackedImage.name].SetActive(false); 
             // TODO: 해제 시에 AR Obeject Seleted 또한 해제해야함, ARButton 활성화
             // 트래킹 해제 시
-            gameObject.GetComponent<ARSelectionController>().SelectedAllFalse();
+            gameObject.GetComponent<ARSelectionController>().deSelectedAll();
             arButton.gameObject.SetActive(true);
         }
     }
@@ -79,11 +81,14 @@ public class ARTrackedImg : MonoBehaviour
             trackedObject.transform.rotation = trackedImage.transform.rotation;
             // 활성화
             trackedObject.SetActive(true);
+            // 선택 활성화
+            gameObject.GetComponent<ARSelectionController>().SelectedObject(trackedObject.GetComponentInChildren<ARObject>());
 
             // UI 버튼 정보 이미지로 변경
             // gameObject.GetComponent<ARSelectionController>().ChangeButtonImage(true);
         }else{
             trackedObject.SetActive(false);
+            gameObject.GetComponent<ARSelectionController>().deSelectedAll();
         }
     }
 }
