@@ -1,0 +1,105 @@
+Using pre-set license
+Built from '2020.3/release' branch; Version is '2020.3.12f1 (b3b2c6512326) revision 11776710'; Using compiler version '192528614'; Build Type 'Release'
+OS: 'Windows 10 Pro; OS build 19042.1110; Version 2009; 64bit' Language: 'ko' Physical Memory: 16279 MB
+BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 0
+
+ COMMAND LINE ARGUMENTS:
+C:\Program Files\2020.3.12f1\Editor\Unity.exe
+-adb2
+-batchMode
+-noUpm
+-name
+AssetImportWorker0
+-projectPath
+C:/projects/db/DB_AR_APP
+-logFile
+Logs/AssetImportWorker0.log
+-srvPort
+7624
+Successfully changed project path to: C:/projects/db/DB_AR_APP
+C:/projects/db/DB_AR_APP
+Using Asset Import Pipeline V2.
+Refreshing native plugins compatible for Editor in 186.41 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Initialize engine version: 2020.3.12f1 (b3b2c6512326)
+[Subsystems] Discovering subsystems at path C:/Program Files/2020.3.12f1/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path C:/projects/db/DB_AR_APP/Assets
+GfxDevice: creating device client; threaded=0
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.0]
+    Renderer: NVIDIA GeForce GTX 960M (ID=0x139b)
+    Vendor:   
+    VRAM:     4055 MB
+    Driver:   27.21.14.6089
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Initialize mono
+Mono path[0] = 'C:/Program Files/2020.3.12f1/Editor/Data/Managed'
+Mono path[1] = 'C:/Program Files/2020.3.12f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
+Mono config path = 'C:/Program Files/2020.3.12f1/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56052
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: C:/Program Files/2020.3.12f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Registered in 0.004955 seconds.
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 111.31 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  4.757 seconds
+Platform modules already initialized, skipping
+Registering precompiled user dll's ...
+Registered in 0.020843 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 129.84 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  2.225 seconds
+Platform modules already initialized, skipping
+========================================================================
+Worker process is ready to serve import requests
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.09 seconds
+Refreshing native plugins compatible for Editor in 1.27 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3650 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 167.3 MB.
+System memory in use after: 167.5 MB.
+
+Unloading 62 unused Assets to reduce memory usage. Loaded Objects now: 4069.
+Total: 7.351200 ms (FindLiveObjects: 0.397900 ms CreateObjectMapping: 0.357300 ms MarkObjects: 6.457600 ms  DeleteObjects: 0.136800 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-codec-MediaFoundation-h265: 746d11721c4dcdbdad8f713fa42b33f4 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  path: Assets/Scripts/ARSelectionController.cs
+  artifactKey: Guid(70b1faa7b3729054baf71f0394b925c8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/ARSelectionController.cs using Guid(70b1faa7b3729054baf71f0394b925c8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '34dbac5de27a57d902ec58c6127eeada') in 0.056252 seconds 
+  Import took 0.063035 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000385 seconds.
+  path: Assets/Scripts/PlacementManager.cs
+  artifactKey: Guid(748c0a391f0b19945828f81aba7778cf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/PlacementManager.cs using Guid(748c0a391f0b19945828f81aba7778cf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4d50d29bacbac948c0d26670508024d7') in 0.008852 seconds 
+  Import took 0.016572 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000424 seconds.
+  path: Assets/Scripts/ChangeScene.cs
+  artifactKey: Guid(7448954178807374390bb3193e52d2f2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/ChangeScene.cs using Guid(7448954178807374390bb3193e52d2f2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f5b343bd7b67029af786cfd86e7c5a77') in 0.010253 seconds 
+  Import took 0.019048 seconds .
+
