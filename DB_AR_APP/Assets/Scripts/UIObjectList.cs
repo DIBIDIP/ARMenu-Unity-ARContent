@@ -44,7 +44,8 @@ public class UIObjectList : MonoBehaviour
     }
 
     private void selectClick(GameObject obj){
-        gameObject.GetComponent<ARPlaceOnPlane>().setPlaceObject(obj);
+        Debug.Log(obj.name);
+        GameObject.Find("AR Session Origin").gameObject.GetComponent<ARPlaceOnPlane>().placeObject = obj;
     }
 
     // Update is called once per frame

@@ -657,7 +657,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 594848077}
+      - m_Target: {fileID: 2127146493}
         m_TargetAssemblyTypeName: ARPlaceOnPlane, Assembly-CSharp
         m_MethodName: PlaceObjectByButton
         m_Mode: 1
@@ -841,7 +841,6 @@ GameObject:
   - component: {fileID: 594848074}
   - component: {fileID: 594848073}
   - component: {fileID: 594848076}
-  - component: {fileID: 594848077}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -910,20 +909,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneName: Main Scene
---- !u!114 &594848077
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 594848072}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0f15cfea9d80b0a4eb51ff46dc413359, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  arRaycaster: {fileID: 2127146492}
-  placeObject: {fileID: 442861854}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -1456,7 +1441,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 199e647b5d417e940988eea273b1dde7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  obj: {fileID: 0}
 --- !u!114 &1490691328
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6988,7 +6972,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1680122399}
   m_HandleRect: {fileID: 1680122398}
   m_Direction: 2
-  m_Value: 0
+  m_Value: 1
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -7048,6 +7032,7 @@ GameObject:
   - component: {fileID: 2127146490}
   - component: {fileID: 2127146487}
   - component: {fileID: 2127146491}
+  - component: {fileID: 2127146493}
   m_Layer: 0
   m_Name: AR Session Origin
   m_TagString: Untagged
@@ -7095,11 +7080,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45a2717e2c4def44491aeb49053badde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  trackedPrefabs:
-  - {fileID: 442861854}
-  - {fileID: 581378403}
-  - {fileID: 4412234067434198736}
-  - {fileID: 971773025}
+  trackedPrefabs: []
+  objPool: {fileID: 2021560391}
   arButton: {fileID: 572033963}
 --- !u!114 &2127146488
 MonoBehaviour:
@@ -7155,11 +7137,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70b1faa7b3729054baf71f0394b925c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  arObjects:
-  - {fileID: 442861856}
-  - {fileID: 581378405}
-  - {fileID: 4412234067434198738}
-  - {fileID: 971773028}
+  arObjects: []
+  objectPool: {fileID: 2021560391}
   arCamera: {fileID: 554896730}
   ARButton: {fileID: 572033963}
   DeleteButton: {fileID: 347332170}
@@ -7178,6 +7157,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_RaycastPrefab: {fileID: 0}
+--- !u!114 &2127146493
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2127146484}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f15cfea9d80b0a4eb51ff46dc413359, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  arRaycaster: {fileID: 2127146492}
+  placeObject: {fileID: 442861854}
 --- !u!1001 &2881690636273001837
 PrefabInstance:
   m_ObjectHideFlags: 0
