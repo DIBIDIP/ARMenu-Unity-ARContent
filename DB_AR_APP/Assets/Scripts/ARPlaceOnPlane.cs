@@ -70,6 +70,7 @@ public class ARPlaceOnPlane : MonoBehaviour
             // 위치 설정
             placeObject.transform.SetPositionAndRotation(placementPose.position, placementPose.rotation);
             // 오브젝트 소환 시, 오브젝트 선택 활성화 그리고, 오브젝트 삭제 버튼 활성화
+            gameObject.GetComponent<ARSelectionController>().deSelectedAll();
             placeObject.GetComponentInChildren<ARObject>().Selected = true;
             gameObject.GetComponent<ARSelectionController>().ObjectSelected(true);
         }
@@ -77,6 +78,7 @@ public class ARPlaceOnPlane : MonoBehaviour
         {
             placeObject.SetActive(false);
             gameObject.GetComponent<ARSelectionController>().ObjectSelected(false);
+            gameObject.GetComponent<ARSelectionController>().deSelectedAll();
         }
     }
 }
