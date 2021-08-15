@@ -8,7 +8,10 @@ using UnityEngine.UI;
 public class ARTrackedImg : MonoBehaviour
 {   
     [SerializeField]
-    private GameObject[] trackedPrefabs; // 이미지를 인식했을 때 출력되는 프리팹 목록
+    private List<GameObject> trackedPrefabs; // 이미지를 인식했을 때 출력되는 프리팹 목록
+
+    [SerializeField]
+    private GameObject objPool;
     // 이미지를 인식했을 떄 출력되는 오브젝트 목록
     private Dictionary<string, GameObject> spawnedObjects = new Dictionary<string, GameObject>();
     private ARTrackedImageManager trackedImageManager;
@@ -18,6 +21,11 @@ public class ARTrackedImg : MonoBehaviour
 
     private void Awake()
     {
+        for (int i = 0; i < objPool.transform.childCount; i++){
+            var child = objPool.transform.GetChild(i).gameObject;
+            trackedPrefabs.Add(child);
+        }
+
         // AR Session Origin 오브젝트에 컴포넌트로 적용했을 때 사용 가능
         trackedImageManager = GetComponent<ARTrackedImageManager>();
 

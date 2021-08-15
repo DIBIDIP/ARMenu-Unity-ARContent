@@ -8,7 +8,9 @@ using UnityEngine.EventSystems;
 public class ARSelectionController : MonoBehaviour
 {
     [SerializeField]
-    private ARObject[] arObjects;
+    private List<ARObject> arObjects;
+    [SerializeField]
+    private GameObject objectPool;
     [SerializeField]
     private Camera arCamera;
     [SerializeField]
@@ -24,6 +26,10 @@ public class ARSelectionController : MonoBehaviour
     private Vector2 touchPosition = default;
     private void Awake()
     {
+        for (int i = 0; i < objectPool.transform.childCount; i++){
+            ARObject child = objectPool.transform.GetChild(i).gameObject.GetComponent<ARObject>();
+            arObjects.Add(child);
+        }
     }
     // Update is called once per frame
     void Update()

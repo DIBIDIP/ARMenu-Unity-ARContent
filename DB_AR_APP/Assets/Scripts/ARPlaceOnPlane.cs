@@ -26,6 +26,10 @@ public class ARPlaceOnPlane : MonoBehaviour
         UpdateCenterObject();
     }
 
+    public void setPlaceObject(GameObject obj){
+        this.placeObject = obj;
+    }
+
     private void PlaceObjectByTouch()
     {
         // 터치 체크
