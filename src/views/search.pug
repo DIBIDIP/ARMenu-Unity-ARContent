@@ -1,0 +1,11 @@
+extends base.pug
+include mixins/menu
+
+block content
+    form(method="GET")
+        input(placeholder="메뉴명을 입력하세요",name="keyword", type="text")
+        input(type="submit", value="Search now")
+
+    div
+        each menu in menus 
+            +menu(menu)

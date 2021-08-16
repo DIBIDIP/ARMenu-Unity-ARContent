@@ -1,0 +1,27 @@
+extends base
+
+block content
+    menu(src="/" + menu.fileUrl, controls)
+    div
+        h4 원재료들
+        small=menu.ingredients
+        h4 알레르기 목록
+        ul 
+            each allergy in menu.allergies
+                li=allergy
+        h4 영양성분
+        small=menu.nt_calories
+        small=menu.nt_totalCarbohydrate
+        small=menu.nt_totalSugars
+        small=menu.nt_protein
+        small=menu.nt_totalFat
+        small=menu.nt_SaturatedFat
+        small=menu.nt_transFat
+        small=menu.nt_cholesterol
+        small=menu.nt_sodium
+        p=menu.description
+        small=menu.ingredients
+    a(href=`${menu.id}/edit`) 메뉴 편집하기 &rarr;
+    br
+    a(href=`${menu.id}/delete`) 메뉴 삭제하기 &rarr;
+

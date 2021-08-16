@@ -1,0 +1,9 @@
+extends base.pug
+
+block content
+    if errorMessage
+        span=errorMessage
+    form(method="POST", enctype="multipart/form-data")
+        label(for="menuImage") 이미지 업로드
+        input(type="file", accept="image/*",  id="menuImage", name="menuImage")
+        input(type="submit", value="test")
