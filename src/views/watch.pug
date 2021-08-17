@@ -3,6 +3,7 @@ extends base
 block content
     menu(src="/" + menu.fileUrl, controls)
     div
+        p=menu.description
         h4 원재료들
         p=menu.ingredients
         h4 알레르기 목록
@@ -10,17 +11,17 @@ block content
             each hashtag in menu.hashtags
                 li=hashtag
         h4 영양성분
-        p=menu.nt_calories
-        p=menu.nt_totalCarbohydrate
-        p=menu.nt_totalSugars
-        p=menu.nt_protein
-        p=menu.nt_totalFat
-        p=menu.nt_SaturatedFat
-        p=menu.nt_transFat
-        p=menu.nt_cholesterol
-        p=menu.nt_sodium
-        p=menu.description
-        p=menu.ingredients
+        ul
+            p=menu.nt_calories
+            p=menu.nt_totalCarbohydrate
+            p=menu.nt_totalSugars
+            p=menu.nt_protein
+            p=menu.nt_totalFat
+            p=menu.nt_SaturatedFat
+            p=menu.nt_transFat
+            p=menu.nt_cholesterol
+            p=menu.nt_sodium
+
     a(href=`${menu.id}/edit`) 메뉴 편집하기 &rarr;
     br
     a(href=`${menu.id}/delete`) 메뉴 삭제하기 &rarr;
