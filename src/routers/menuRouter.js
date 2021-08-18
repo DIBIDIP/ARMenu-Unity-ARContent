@@ -9,11 +9,7 @@ import {
   gettestUpload,
   posttestUpload,
 } from "../controllers/menuController";
-import {
-  protectorMiddleware,
-  videoUpload,
-  menuImageUpload,
-} from "../middlewares";
+import { protectorMiddleware, fileUpload } from "../middlewares";
 
 const menuRouter = express.Router();
 
@@ -31,16 +27,9 @@ menuRouter
   .route("/upload")
   .all(protectorMiddleware)
   .get(getUpload)
-  .post(videoUpload.single("video"), postUpload);
-menuRouter
-  .route("/upload")
-  .all(protectorMiddleware)
-  .get(getUpload)
-  .post(menuImageUpload.single("menuImage"), postUpload);
+  .post(
+    fileUpload.fields([{ name: "video" }, { name: "menuImage" }]),
+    postUpload
+  );
 
-menuRouter
-  .route("/iU")
-  .all(protectorMiddleware)
-  .get(gettestUpload)
-  .post(menuImageUpload.single("menuImage"), posttestUpload);
 export default menuRouter;

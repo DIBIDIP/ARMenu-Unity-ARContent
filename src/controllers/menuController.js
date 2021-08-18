@@ -44,7 +44,12 @@ export const getUpload = (req, res) => {
 
 /* 이미지등록 해야 함 */
 export const postUpload = async (req, res) => {
-  const { path: fileUrl } = req.file;
+  const { path: fileUrl } = req.files["video"][0];
+  const { path: imgUrl } = req.files["menuImage"][0];
+
+  console.log(fileUrl);
+  console.log(imgUrl);
+
   const {
     title,
     description,
@@ -67,6 +72,7 @@ export const postUpload = async (req, res) => {
       description,
       ingredients,
       fileUrl,
+      imgUrl,
       ingredients,
       allergies,
       hashtags: Menu.formatHashtags(hashtags),

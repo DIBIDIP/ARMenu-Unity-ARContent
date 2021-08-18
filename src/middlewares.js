@@ -29,15 +29,14 @@ export const avatarUpload = multer({
     fileSize: 3000000,
   },
 });
-export const videoUpload = multer({
-  dest: "uploads/videos/",
-  limits: {
-    fileSize: 100000000,
-  },
-});
-export const menuImageUpload = multer({
-  dest: "uploads/img/",
-  limits: {
-    fileSize: 10000000,
-  },
+
+export const fileUpload = multer({
+  storage: multer.diskStorage({
+    destination: function (req, file, cb) {
+      cb(null, "uploads/menu");
+    },
+    filename: function (req, file, cb) {
+      cb(null, file.originalname);
+    },
+  }),
 });
