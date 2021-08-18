@@ -19,6 +19,9 @@ public class UIObjectList : MonoBehaviour
     [SerializeField]
     private RectTransform content;
 
+    
+    private bool listOnOff = false;
+
     private void Awake() {
         // 리스트에 pool 자식을 iterator로 접근 후 하나씩 추가.
         for (int i = 0; i < objectPool.transform.childCount; i++){
@@ -37,7 +40,10 @@ public class UIObjectList : MonoBehaviour
         IEnumerator<GameObject> obj = arObjectList.GetEnumerator();
         foreach (Button button in buttonList){
             obj.MoveNext();
+            // 버튼에 그릴 정보
+            button.GetComponentInChildren<Text>().fontSize = 70;
             button.GetComponentInChildren<Text>().text = obj.Current.name;
+            // 클로저 공유 방지
             var temp = obj.Current; // 임시 저장
             button.onClick.AddListener(() => selectClick(temp));
         }
@@ -48,9 +54,11 @@ public class UIObjectList : MonoBehaviour
         GameObject.Find("AR Session Origin").gameObject.GetComponent<ARPlaceOnPlane>().placeObject = obj;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    // 목록 버튼 이벤트
+    public void listButtonClick(){
+        listOnOff = !listOnOff;
+        // 스크롤바 위치 초기화
+        transform.FindChild("Scroll View").gameObject.GetComponentInChildren<Scrollbar>().value = 0.0f;
+        transform.FindChild("Scroll View").gameObject.SetActive(listOnOff);
     }
 }
