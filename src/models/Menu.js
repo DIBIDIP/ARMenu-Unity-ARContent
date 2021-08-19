@@ -20,10 +20,6 @@ const menuSchema = new mongoose.Schema({
   nt_sodium: { type: String, required: true },
 });
 
-menuSchema.static("formatHashtags", function (hashtags) {
-  return hashtags.split(",");
-});
-
 const Menu = mongoose.model("Menu", menuSchema);
 
 export default Menu;

@@ -25,7 +25,7 @@ export const getEdit = async (req, res) => {
 
 export const postEdit = async (req, res) => {
   const { id } = req.params;
-  const { title, description, hashtags } = req.body;
+  const { title, description, allergies } = req.body;
   const menu = await Menu.exists({ _id: id });
   if (!menu) {
     return res.status(404).render("404", { pageTitle: "메뉴가 없어요." });
@@ -33,7 +33,7 @@ export const postEdit = async (req, res) => {
   await Menu.findByIdAndUpdate(id, {
     title,
     description,
-    hashtags: Menu.formatHashtags(hashtags),
+    hashtags,
   });
   return res.redirect(`/menus/${id}`);
 };
@@ -75,7 +75,7 @@ export const postUpload = async (req, res) => {
       imgUrl,
       ingredients,
       allergies,
-      hashtags: Menu.formatHashtags(hashtags),
+      hashtags,
       nt_calories,
       nt_totalCarbohydrate,
       nt_totalSugars,
@@ -109,7 +109,7 @@ export const search = async (req, res) => {
   if (keyword) {
     menus = await Menu.find({
       hashtags: {
-        $regex: new RegExp(`#${keyword}$`, "i"),
+        $regex: new RegExp(keyword, "i"),
       },
     });
   }
