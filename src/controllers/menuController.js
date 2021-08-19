@@ -25,7 +25,7 @@ export const getEdit = async (req, res) => {
 
 export const postEdit = async (req, res) => {
   const { id } = req.params;
-  const { title, description, allergies } = req.body;
+  const { title, description, hashtags } = req.body;
   const menu = await Menu.exists({ _id: id });
   if (!menu) {
     return res.status(404).render("404", { pageTitle: "메뉴가 없어요." });
@@ -108,31 +108,10 @@ export const search = async (req, res) => {
   let menus = [];
   if (keyword) {
     menus = await Menu.find({
-      title: {
-        $regex: new RegExp(`${keyword}$`, "i"),
+      hashtags: {
+        $regex: new RegExp(`#${keyword}$`, "i"),
       },
     });
   }
   return res.render("search", { pageTitle: "Search", menus });
-};
-
-/* 밑에는 테스트용임 */
-export const gettestUpload = (req, res) => {
-  return res.render("iU", { pageTitle: "image Test" });
-};
-
-export const posttestUpload = async (req, res) => {
-  const { path: menuImageUrl } = req.file;
-  try {
-    await Menu.create({
-      menuImageUrl,
-    });
-    return res.redirect("/");
-  } catch (error) {
-    console.log(error);
-    return res.status(400).render("iU", {
-      pageTitle: "image test",
-      errorMessage: error._message,
-    });
-  }
 };
