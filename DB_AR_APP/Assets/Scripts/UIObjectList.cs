@@ -58,7 +58,7 @@ public class UIObjectList : MonoBehaviour
     public void listButtonClick(){
         listOnOff = !listOnOff;
         // 스크롤바 위치 초기화
-        transform.FindChild("Scroll View").gameObject.GetComponentInChildren<Scrollbar>().value = 0.0f;
-        transform.FindChild("Scroll View").gameObject.SetActive(listOnOff);
+        transform.Find("Scroll View").gameObject.GetComponentInChildren<Scrollbar>().value = 0.0f;
+        transform.Find("Scroll View").gameObject.SetActive(listOnOff);
     }
 }
