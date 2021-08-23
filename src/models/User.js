@@ -26,7 +26,6 @@ const userSchema = mongoose.Schema({
     type: Number,
     default: 0, //기본값으로 0
   },
-  image: String,
   token: {
     type: String,
   },
@@ -35,16 +34,13 @@ const userSchema = mongoose.Schema({
   },
 });
 
+/* 비밀번호 해시, save전 실행 */
 userSchema.pre("save", function (next) {
-  //index 의 user.save 전에 무엇을 한다는 뜻
   var user = this;
   if (user.isModified("password")) {
-    //password가 변환될때만 실행시키겠다
-    //비밀번호를 암호화 시킨다
     bcyrpt.genSalt(saltRounds, function (err, salt) {
       if (err) return next(err);
       bcyrpt.hash(user.password, salt, function (err, hash) {
-        //구글링하면 함수형태 다 나옴
         if (err) return next(err);
         user.password = hash; // 기존에 user.password 즉 사용자가 입력한 비밀번호를 hash 즉 암호화된 비밀번호로 변경해주는것
         next();
@@ -55,6 +51,7 @@ userSchema.pre("save", function (next) {
   }
 });
 
+/* 암호화된 비밀번호 비교 */
 userSchema.methods.comparePassword = function (plainPassword, cb) {
   //plainpassword --> 1234567 와 암호화된 비밀번호가 같은지 확인 / 기존 비밀번호를 암호화 시켜서 확인
   bcyrpt.compare(plainPassword, this.password, function (err, isMatch) {

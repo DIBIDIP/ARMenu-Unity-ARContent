@@ -23,7 +23,7 @@ t_userRouter.get("/api/hello", (req, res) => {
   res.send("Hello, Here is AR-Dish with React");
 });
 
-t_userRouter.route("api/users/auth").all(auth).get(t_getAuth);
+t_userRouter.route("/api/users/auth").all(auth).get(t_getAuth);
 t_userRouter.route("/api/users/logout").all(auth).get(t_getLogout);
 
 export default t_userRouter;

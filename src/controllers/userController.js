@@ -6,6 +6,34 @@ import config from "../config/key";
 import auth from "../auth";
 
 /* test용 함수 */
+export const t_getJoin = (req, res) =>
+  res.render("join", { pageTitle: "Join" });
+
+export const t_postRegister = (req, res) => {
+  const { name, lastname, email, password, password2 } = req.body;
+  const pageTitle = "Join";
+  if (password !== password2) {
+    return res.status(400).render("join", {
+      pageTitle,
+      errorMessage: "비밀번호가 일치하지 않습니다.",
+    });
+  }
+  try {
+    User.create({
+      name,
+      lastname,
+      email,
+      password,
+    });
+    return res.redirect("/login");
+  } catch (error) {
+    return res.status(400).render("join", {
+      pageTitle: "ERROR",
+      errorMessage: error._message,
+    });
+  }
+};
+/*
 export const t_postRegister = (req, res) => {
   const user = new User(req.body);
   user.save((err, userInfo) => {
@@ -15,6 +43,7 @@ export const t_postRegister = (req, res) => {
     });
   });
 };
+*/
 
 export const t_postLogin = (req, res) => {
   User.findOne({ email: req.body.email }, (err, user) => {
@@ -65,3 +94,35 @@ export const t_getLogout = (req, res) => {
 };
 
 /* 위까지 test용 함수 */
+export const getJoin = (req, res) => res.render("join", { pageTitle: "Join" });
+export const postJoin = async (req, res) => {
+  const { name, lastname, email, password, password2 } = req.body;
+  const pageTitle = "Join";
+  if (password !== password2) {
+    return res.status(400).render("join", {
+      pageTitle,
+      errorMessage: "Password confirmation does not match.",
+    });
+  }
+  const exists = await User.exists({ email });
+  if (exists) {
+    return res.status(400).render("join", {
+      pageTitle,
+      errorMessage: "This email is already taken.",
+    });
+  }
+  try {
+    await User.create({
+      name,
+      lastname,
+      email,
+      password,
+    });
+    return res.redirect("/login");
+  } catch (error) {
+    return res.status(400).render("join", {
+      pageTitle: "ERROR",
+      errorMessage: error._message,
+    });
+  }
+};
