@@ -1,125 +1,67 @@
 import User from "../models/User";
 import fetch from "node-fetch";
 import bcrypt from "bcrypt";
+import bodyParser from "body-parser";
+import config from "../config/key";
+import auth from "../auth";
 
-export const getJoin = (req, res) => res.render("join", { pageTitle: "Join" });
-export const postJoin = async (req, res) => {
-  const { name, username, email, password, password2, location } = req.body;
-  const pageTitle = "Join";
-  if (password !== password2) {
-    return res.status(400).render("join", {
-      pageTitle,
-      errorMessage: "Password confirmation does not match.",
+/* test용 함수 */
+export const t_postRegister = (req, res) => {
+  const user = new User(req.body);
+  user.save((err, userInfo) => {
+    if (err) return res.json({ success: false, err });
+    return res.status(200).json({
+      success: true,
     });
-  }
-  const exists = await User.exists({ $or: [{ username }, { email }] });
-  if (exists) {
-    return res.status(400).render("join", {
-      pageTitle,
-      errorMessage: "This username/email is already taken.",
-    });
-  }
-  try {
-    await User.create({
-      name,
-      username,
-      email,
-      password,
-      location,
-    });
-    return res.redirect("/login");
-  } catch (error) {
-    return res.status(400).render("join", {
-      pageTitle: "Upload Video",
-      errorMessage: error._message,
-    });
-  }
-};
-export const getLogin = (req, res) =>
-  res.render("login", { pageTitle: "Login" });
-
-export const postLogin = async (req, res) => {
-  const { username, password } = req.body;
-  const pageTitle = "Login";
-  const user = await User.findOne({ username, socialOnly: false });
-  if (!user) {
-    return res.status(400).render("login", {
-      pageTitle,
-      errorMessage: "An account with this username does not exists.",
-    });
-  }
-  const ok = await bcrypt.compare(password, user.password);
-  if (!ok) {
-    return res.status(400).render("login", {
-      pageTitle,
-      errorMessage: "Wrong password",
-    });
-  }
-  req.session.loggedIn = true;
-  req.session.user = user;
-  return res.redirect("/");
+  });
 };
 
-export const logout = (req, res) => {
-  req.session.destroy();
-  return res.redirect("/");
-};
-export const getEdit = (req, res) => {
-  return res.render("edit-profile", { pageTitle: "Edit Profile" });
-};
-export const postEdit = async (req, res) => {
-  const {
-    session: {
-      user: { _id, avatarUrl },
-    },
-    body: { name, email, username, location },
-    file,
-  } = req;
-  const updatedUser = await User.findByIdAndUpdate(
-    _id,
-    {
-      avatarUrl: file ? file.path : avatarUrl,
-      name,
-      email,
-      username,
-      location,
-    },
-    { new: true }
-  );
-  req.session.user = updatedUser;
-  return res.redirect("/users/edit");
+export const t_postLogin = (req, res) => {
+  User.findOne({ email: req.body.email }, (err, user) => {
+    if (!user) {
+      return res.json({
+        loginSuccess: false,
+        message: "제공된 이메일에 해당하는 유저가 없습니다.",
+      });
+    }
+    user.comparePassword(req.body.password, (err, isMatch) => {
+      if (!isMatch)
+        return res.json({
+          loginSuccess: false,
+          message: "비밀번호가 틀렸습니다.",
+        });
+    });
+    user.generateToken((err, user) => {
+      if (err) return res.status(400).send(err);
+      res
+        .cookie("x_auth", user.token)
+        .status(200)
+        .json({ loginSuccess: true, userId: user._id });
+    });
+  });
 };
 
-export const getChangePassword = (req, res) => {
-  if (req.session.user.socialOnly === true) {
-    return res.redirect("/");
-  }
-  return res.render("users/change-password", { pageTitle: "Change Password" });
-};
-export const postChangePassword = async (req, res) => {
-  const {
-    session: {
-      user: { _id },
-    },
-    body: { oldPassword, newPassword, newPasswordConfirmation },
-  } = req;
-  const user = await User.findById(_id);
-  const ok = await bcrypt.compare(oldPassword, user.password);
-  if (!ok) {
-    return res.status(400).render("users/change-password", {
-      pageTitle: "Change Password",
-      errorMessage: "The current password is incorrect",
-    });
-  }
-  if (newPassword !== newPasswordConfirmation) {
-    return res.status(400).render("users/change-password", {
-      pageTitle: "Change Password",
-      errorMessage: "The password does not match the confirmation",
-    });
-  }
-  user.password = newPassword;
-  await user.save();
-  return res.redirect("/users/logout");
+export const t_getAuth = (req, res) => {
+  //여기까지 미들웨어를 통과해 왔다는 말은 Auth 가 True 라는 말
+  res.status(200).json({
+    _id: req.user._id,
+    isAdmin: req.user.role === 0 ? false : true, //role 이 0 -> 일반유저 , role 이 0이 아니면 관리자
+    isAuth: true,
+    email: req.user.email,
+    name: req.user.name,
+    lastname: req.user.lastname,
+    role: req.user.role,
+    image: req.user.image,
+  });
 };
 
-export const see = (req, res) => res.send("See User");
+export const t_getLogout = (req, res) => {
+  User.findOneAndUpdate({ _id: req.user._id }, { token: "" }, (err, user) => {
+    if (err) return res.json({ success: false, err });
+    return res.status(200).send({
+      success: true,
+    });
+  });
+};
+
+/* 위까지 test용 함수 */

@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
+import config from "./config/key";
 
-mongoose.connect(process.env.DB_URL, {
+mongoose.connect(config.mongoURL, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useFindAndModify: false,
