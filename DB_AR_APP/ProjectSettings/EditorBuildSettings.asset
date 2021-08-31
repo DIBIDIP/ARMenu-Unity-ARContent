@@ -11,6 +11,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Camera Scene.unity
     guid: e69ef53fe7d1e6044b8a3f5b6e84de57
+  - enabled: 1
+    path: Assets/Scenes/Tutorial Scene.unity
+    guid: a220f6ee1b184d84b8c2081e87466bbb
   m_configObjects:
     UnityEditor.XR.ARCore.ARCoreSettings: {fileID: 11400000, guid: 49e508af2daa5dd43b9dcafc42be0d97, type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 2e5e5d01b43f7f946b6567226b540eb2, type: 2}
