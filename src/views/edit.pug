@@ -1,9 +1,0 @@
-extends base.pug
-
-block content
-    h4 메뉴 수정
-    form(method="POST")
-        input(name="title", placeholder="메뉴명", value=menu.title, required)
-        input(placeholder="간략설명", required, type="text", name="description", minlength=20, value=menu.description)
-        input(placeholder="알레르기성분입력(','로 구분).", required, type="text", name="hashtags", value=menu.hashtags.join())
-        input(value="Save",type="submit")
