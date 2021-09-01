@@ -22,3 +22,15 @@ npm run dev 로 실행
 
 DB 변경시 server/config/dev.js 폴더 
 mongoURL : ~ 부분을 변경
+
+
+
+Frontend 실행 : 터미널에서 cd client / npm run start
+
+
+
+Backend 실행 : 터미널 최상위에서 npm run backend
+
+
+
+동시에 한번에 실행 : 최상위에서 npm run dev
