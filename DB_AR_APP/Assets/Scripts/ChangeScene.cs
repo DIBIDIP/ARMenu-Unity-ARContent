@@ -10,4 +10,9 @@ public class ChangeScene : MonoBehaviour
     public void LoadScene(){
         SceneManager.LoadScene(sceneName);
     }
+
+    public void searchButtonClick(){
+        // 검색 로직 시작 
+        GameObject.Find("ARMenuData").GetComponent<ARMenuData>().findMenuOrName();
+    }
 }

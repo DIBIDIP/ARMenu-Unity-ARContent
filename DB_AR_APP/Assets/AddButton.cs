@@ -13,6 +13,8 @@ public class AddButton : MonoBehaviour
         if (search.text != string.Empty)
         {
             search_btn.SetActive(true);
+            // 싱글톤 객체에 검색어를 넘긴다.
+            GameObject.Find("ARMenuData").GetComponent<ARMenuData>().searchText = search.text;
         }
         else
         {

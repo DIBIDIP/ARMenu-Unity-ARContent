@@ -11,6 +11,8 @@ public class Move_Page : MonoBehaviour
     // 부모 컴포넌트
     [SerializeField]
     private GameObject view;
+    [SerializeField]
+    private UnityEngine.UI.Text debugText;
     // 마우스 좌표 (x 좌표만)
     float MovsPos_x = 0.0f;
     float DownPost_x = 0.0f;
@@ -75,10 +77,10 @@ public class Move_Page : MonoBehaviour
         }
 
         if(IsMoved){
-            view.transform.position = Vector2.Lerp(view.transform.position, new Vector2(-1080 * cnt + 540, view.transform.position.y), 0.05f);
+            view.transform.localPosition = Vector2.Lerp(view.transform.localPosition, new Vector2(-1080 * cnt, view.transform.localPosition.y), 0.05f);
             // 도착
-            Debug.Log(Mathf.Approximately((int)view.transform.position.x, (-1080 * cnt + 541)));
-            if(closePosX(view.transform.position, (-1080 * cnt + 541))){
+            //Debug.Log(Mathf.Approximately((int)view.transform.position.x, (-1080 * cnt + 541)));
+            if(closePosX(view.transform.localPosition, (-1080 * cnt))){
                 IsMoved = false;
                 //view.transform.position = new Vector3(-1080*cnt, view.transform.position.y, view.transform.position.z);
                 Debug.Log("도착");
@@ -114,10 +116,10 @@ public class Move_Page : MonoBehaviour
         }
       
         if(IsMoved){
-            view.transform.position = Vector2.Lerp(view.transform.position, new Vector2(-1080 * cnt, view.transform.position.y), 0.05f);
+            view.transform.localPosition = Vector2.Lerp(view.transform.localPosition, new Vector2(-1080 * cnt, view.transform.localPosition.y), 0.05f);
             // 도착
-            Debug.Log(Mathf.Approximately((int)view.transform.position.x, (-1080 * cnt)));
-            if(closePosX(view.transform.position, (-1080 * cnt))){
+            //Debug.Log(Mathf.Approximately((int)view.transform.localPosition.x, (-1080 * cnt)));
+            if(closePosX(view.transform.localPosition, (-1080 * cnt))){
                 IsMoved = false;
                 //view.transform.position = new Vector3(-1080*cnt, view.transform.position.y, view.transform.position.z);
                 Debug.Log("도착");
@@ -137,12 +139,12 @@ public class Move_Page : MonoBehaviour
     public void Prev()
     {
         cnt--;
-        view.transform.position = new Vector2((-1080 * cnt), view.transform.position.y);
+        view.transform.localPosition = new Vector2((-1080 * cnt), view.transform.localPosition.y);
     }
     
     public void Next()
     {
         cnt++;
-        view.transform.position = new Vector2((-1080 * cnt), view.transform.position.y);
+        view.transform.localPosition = new Vector2((-1080 * cnt), view.transform.localPosition.y);
     }
 }

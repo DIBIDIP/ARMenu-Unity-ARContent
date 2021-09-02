@@ -13,6 +13,9 @@ public class ARMenuData : MonoBehaviour {
 
     [SerializeField]
     private List<ARRestaurant> Restaurants;
+    public string searchText;
+    public bool searchSuccess = false; // 검색 성공?
+    public int searchIndex = -1;        // 검색 성공하면 받을 인덱스
 
     // 인스턴스 property
     public static ARMenuData Instance
@@ -40,6 +43,55 @@ public class ARMenuData : MonoBehaviour {
         }
         DontDestroyOnLoad(gameObject);
     }
+
+
+    private void Update() {
+    }
+
+    public bool findMenuOrName(){
+        // 검색어 (메뉴 이름 또는 가게 이름) 이 검색되면 관련된 아이템을 보여준다.
+
+        if(searchText.Length > 0){
+            bool resName = false;
+            bool menName = false;
+            
+            ARRestaurant findItem = null; // 찾은 결과
+            int cnt = 0;
+            foreach(ARRestaurant index in Restaurants){
+                resName = index.restaurantName.Contains(searchText);
+                menName = index.menuName.Contains(searchText);
+                if(resName || menName){
+                    findItem = index;
+                    searchIndex = cnt;
+                    break; // 즉시 검색 로직 종료
+                }
+                cnt++;
+            }
+
+            if(findItem != null){
+                Debug.Log("검색 결과 " + findItem.restaurantName);
+                searchSuccess = true;
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public ARRestaurant getIndexOfRestaurant(int index){
+        if(index >= 0 && index <= Restaurants.Count){
+            return Restaurants[index];
+        }
+        return null;
+    }
+
+    public ARRestaurant getSerachSuccessRestaurant(){
+        if(!searchSuccess){
+            return null;
+        }
+        return Restaurants[searchIndex];
+    }
+
+
     // json to Object
     private T JsonToObject<T>(string json){
         return JsonConvert.DeserializeObject<T>(json);
