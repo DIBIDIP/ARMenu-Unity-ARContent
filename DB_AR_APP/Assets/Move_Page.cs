@@ -77,7 +77,7 @@ public class Move_Page : MonoBehaviour
         }
 
         if(IsMoved){
-            view.transform.localPosition = Vector2.Lerp(view.transform.localPosition, new Vector2(-1080 * cnt, view.transform.localPosition.y), 0.05f);
+            view.transform.localPosition = Vector2.Lerp(view.transform.localPosition, new Vector2(-1080 * cnt, view.transform.localPosition.y), 0.1f);
             // 도착
             //Debug.Log(Mathf.Approximately((int)view.transform.position.x, (-1080 * cnt + 541)));
             if(closePosX(view.transform.localPosition, (-1080 * cnt))){
@@ -116,7 +116,7 @@ public class Move_Page : MonoBehaviour
         }
       
         if(IsMoved){
-            view.transform.localPosition = Vector2.Lerp(view.transform.localPosition, new Vector2(-1080 * cnt, view.transform.localPosition.y), 0.05f);
+            view.transform.localPosition = Vector2.Lerp(view.transform.localPosition, new Vector2(-1080 * cnt, view.transform.localPosition.y), 0.1f);
             // 도착
             //Debug.Log(Mathf.Approximately((int)view.transform.localPosition.x, (-1080 * cnt)));
             if(closePosX(view.transform.localPosition, (-1080 * cnt))){
@@ -130,21 +130,35 @@ public class Move_Page : MonoBehaviour
     }
 
     private bool closePosX(Vector2 v1, float target_x){
-        if((int)v1.x > target_x - 10 && (int)v1.x < target_x + 10){
+        if((int)v1.x > target_x - 2 && (int)v1.x < target_x + 2){
             return true;
         }
         return false;
     }
 
+    private bool IsButtonClick = false;
     public void Prev()
     {
-        cnt--;
-        view.transform.localPosition = new Vector2((-1080 * cnt), view.transform.localPosition.y);
+        if(!IsButtonClick){
+            IsButtonClick = true;
+            cnt--;
+            view.transform.localPosition = new Vector2((-1080 * cnt), view.transform.localPosition.y);
+            Invoke("ButtonClickDelay", 0.7f);   // Delay On
+        }
+    }
+
+    // 반복 클릭 방지
+    private void ButtonClickDelay(){
+        IsButtonClick = false;
     }
     
     public void Next()
     {
-        cnt++;
-        view.transform.localPosition = new Vector2((-1080 * cnt), view.transform.localPosition.y);
+        if(!IsButtonClick){
+            IsButtonClick = true;
+            cnt++;
+            view.transform.localPosition = new Vector2((-1080 * cnt), view.transform.localPosition.y);
+            Invoke("ButtonClickDelay", 0.7f); // Delay On
+        }
     }
 }

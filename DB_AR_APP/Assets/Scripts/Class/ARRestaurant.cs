@@ -5,8 +5,8 @@ using UnityEngine;
 namespace ARContent{
     [System.Serializable]
     public class ARRestaurant {
-        public string _id;
         public string restaurantName;
+        public string _id;
         public string menuName;
         public string description;
         public string allergies;

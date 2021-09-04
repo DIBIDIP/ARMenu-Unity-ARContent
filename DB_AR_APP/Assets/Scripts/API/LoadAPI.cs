@@ -5,7 +5,7 @@ using UnityEngine.Networking;
 
 public class LoadAPI : MonoBehaviour
 {
-    string resultJson;
+    private string resultJson; // Json 데이터
     
     public bool IsSuccesLoadData = false;
     [SerializeField]

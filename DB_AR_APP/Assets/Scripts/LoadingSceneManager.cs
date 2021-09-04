@@ -13,10 +13,18 @@ public class LoadingSceneManager : MonoBehaviour
     Text notice;
 
     bool IsLoadingDone = false;
+    bool IsError = false;
 
     // Start is called before the first frame update
     void Start()
     {
+        if(Application.internetReachability == NetworkReachability.NotReachable){
+            notice.text = "인터넷 연결을 확인해주세요.";
+            notice.gameObject.SetActive(true);
+            IsError = true;
+            return;
+        }
+        notice.GetComponent<TextAnimation>().setAni(false);
         StartCoroutine(testLoad());
     }
 
@@ -25,25 +33,51 @@ public class LoadingSceneManager : MonoBehaviour
         if(IsLoadingDone && Input.GetMouseButtonDown(0)){
             SceneManager.LoadScene("Main Scene");
         }
+        if (IsError && Input.GetMouseButtonDown(0)){
+            Debug.Log("종료");
+            Application.Quit();
+        }
 
         #endif
         #if UNITY_ANDROID
         if(IsLoadingDone && Input.touchCount > 0){
             SceneManager.LoadScene("Main Scene");
         }
+        if (IsError && Input.touchCount > 0){
+            Debug.Log("종료");
+            Application.Quit();
+        }
         #endif
     }
 
     IEnumerator testLoad(){
         Debug.Log("로딩 시작");
-        while((progressBar.fillAmount < 0.9f)){
-            for(int i = 0 ; i < 10; i++){
-                progressBar.fillAmount += 0.1f;
-                yield return new WaitForSeconds(0.2f);
-            }
-        }
+
+        notice.text = "불러오는 중";
         notice.gameObject.SetActive(true);
-        IsLoadingDone = true;
+        // API Load Data
+        bool apiLoad = GameObject.Find("APIManager").GetComponent<LoadAPI>().IsSuccesLoadData;
+        while(!apiLoad){
+            apiLoad = GameObject.Find("APIManager").GetComponent<LoadAPI>().IsSuccesLoadData;
+            progressBar.fillAmount += 0.005f;
+            yield return new WaitForSeconds(0.1f);
+        }
+
+        // DONE
+        progressBar.fillAmount = 1f;
+
+        // ERROR
+        notice.gameObject.SetActive(true);
+
+        if(apiLoad == false){
+            notice.text = "서버와 연결이 해제됬습니다.";
+            IsError = true;
+        }
+        else {
+            IsLoadingDone = true;
+            notice.text = "화면을 터치해주세요.";
+            notice.GetComponent<TextAnimation>().setAni(true);
+        }
     }
 
     IEnumerator LoadScene() {

@@ -15,18 +15,44 @@ public class TextAnimation : MonoBehaviour
     private float elapsed  = 0.0f;
     public float offset;
 
+    private int textSize;
 
+    bool startAni = false;
+    int plusDotCount = 0;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        textSize = noticeText.fontSize;
+        InvokeRepeating("plusDot", 0f, 0.5f);
+    }
+
+    public void setAni(bool start){
+        startAni = start;
+    }
+
+    void plusDot(){
+        if(plusDotCount == 3){
+            plusDotCount = 0;
+            noticeText.text = noticeText.text.Replace(".", string.Empty);
+        }
+        noticeText.text += ".";
+        plusDotCount++;
     }
 
     // Update is called once per frame
     void Update()
     {
-        BounceFontSize(90); // 사이즈 값 부터 사인값으로 바운스, 효과
+        if (startAni){
+            plusDotCount = 1;
+            if(plusDotCount != 0){
+                plusDotCount = 0;
+                CancelInvoke("plusDot");
+            }
+            BounceFontSize(textSize); // 사이즈 값 부터 사인값으로 바운스, 효과
+        }else{
+            
+        }
     }
 
     void BounceFontSize(int Size) {

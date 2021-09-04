@@ -12,10 +12,14 @@ public class ARMenuData : MonoBehaviour {
     private static ARMenuData instance;
 
     [SerializeField]
-    private List<ARRestaurant> Restaurants;
+    private Dictionary<string, ARRestaurant> Restaurants;
+
+    [SerializeField]
+    private List<ARRestaurant> searchResultRestaurant;    // 검색결과
     public string searchText;
     public bool searchSuccess = false; // 검색 성공?
-    public int searchIndex = -1;        // 검색 성공하면 받을 인덱스
+    [SerializeField]
+    private string detailID;   // ID
 
     // 인스턴스 property
     public static ARMenuData Instance
@@ -42,53 +46,84 @@ public class ARMenuData : MonoBehaviour {
             return ;
         }
         DontDestroyOnLoad(gameObject);
+
+        // 딕셔너리 형식으로 gameObject 정보를 저장한다.
+        Restaurants = new Dictionary<string, ARRestaurant> ();
     }
 
 
     private void Update() {
     }
 
+    // detail id 설정
+    public void setDetailID(string id){
+        this.detailID = id;
+    }
+
+    // ID로 DB에 저장된 값을 가져온다.
+    public ARRestaurant getDetailItem(){
+        return Restaurants[detailID];
+    }
+
+    // DB에 저장된 모든 가게
+    public bool findAll(){
+        searchResultRestaurant.Clear(); // 리스트 초기화
+
+        // 딕셔너리 모든 아이템 순회
+        foreach(KeyValuePair<string, ARRestaurant> pair in Restaurants){
+            ARRestaurant item = pair.Value;
+            searchResultRestaurant.Add(item);
+        }
+        
+        if(searchResultRestaurant.Count > 0){
+            searchSuccess = true;
+            return true;
+        }
+        
+        return false;
+    }
+
+    // 검색 로직
     public bool findMenuOrName(){
         // 검색어 (메뉴 이름 또는 가게 이름) 이 검색되면 관련된 아이템을 보여준다.
+        searchResultRestaurant.Clear(); // 리스트 초기화
 
         if(searchText.Length > 0){
+            // 메뉴,가게명을 찾았는지 검사함.
             bool resName = false;
             bool menName = false;
             
-            ARRestaurant findItem = null; // 찾은 결과
             int cnt = 0;
-            foreach(ARRestaurant index in Restaurants){
-                resName = index.restaurantName.Contains(searchText);
-                menName = index.menuName.Contains(searchText);
+            foreach(KeyValuePair<string, ARRestaurant> pair in Restaurants){
+                ARRestaurant item = pair.Value;
+                resName = item.restaurantName.Contains(searchText);
+                menName = item.menuName.Contains(searchText);
                 if(resName || menName){
-                    findItem = index;
-                    searchIndex = cnt;
-                    break; // 즉시 검색 로직 종료
+                    searchResultRestaurant.Add(item); // 연관된 모든 아이템을 추가한다.
                 }
                 cnt++;
             }
 
-            if(findItem != null){
-                Debug.Log("검색 결과 " + findItem.restaurantName);
+            if(searchResultRestaurant.Count > 0){
                 searchSuccess = true;
                 return true;
             }
         }
+        searchSuccess = false;
         return false;
     }
 
-    public ARRestaurant getIndexOfRestaurant(int index){
-        if(index >= 0 && index <= Restaurants.Count){
-            return Restaurants[index];
-        }
-        return null;
+    public ARRestaurant getIdOfRestaurant(string id){
+        return Restaurants[id];
     }
 
-    public ARRestaurant getSerachSuccessRestaurant(){
+    // 검색 결과를 반환한다.
+    public List<ARRestaurant> getSerachSuccessRestaurants(){
         if(!searchSuccess){
             return null;
         }
-        return Restaurants[searchIndex];
+        // 
+        return searchResultRestaurant;
     }
 
 
@@ -102,10 +137,17 @@ public class ARMenuData : MonoBehaviour {
             return false;
         }
         JsonData data = JsonMapper.ToObject(json);
+
     
         for (int i = 0 ; i < data.Count; i++){
-            Restaurants.Add(new ARRestaurant(
-                data[i]["_id"].ToString(), data[i]["restaurantName"].ToString(), data[i]["menuName"].ToString(), data[i]["description"].ToString(), data[i]["allergies"].ToString()
+            // 알레르기 변환 
+            string allerg = "";
+            foreach (var word in data[i]["allergies"]){
+                allerg += word.ToString();
+            }
+            // ID, DB 정보로 저장
+            Restaurants.Add(data[i]["_id"].ToString() ,new ARRestaurant(
+                data[i]["_id"].ToString(), data[i]["restaurantName"].ToString(), data[i]["menuName"].ToString(), data[i]["description"].ToString(), allerg
                 , data[i]["ingredients"].ToString(), data[i]["nutrients"]["nt_calories"].ToString(),  data[i]["nutrients"]["nt_totalCarbohydrate"].ToString(), data[i]["nutrients"]["nt_totalSugars"].ToString(),
                 data[i]["nutrients"]["nt_protein"].ToString(), data[i]["nutrients"]["nt_totalFat"].ToString(), data[i]["nutrients"]["nt_SaturatedFat"].ToString(),
                 data[i]["nutrients"]["nt_transFat"].ToString(), data[i]["nutrients"]["nt_cholesterol"].ToString(), data[i]["nutrients"]["nt_sodium"].ToString(), data[i]["cookingTime"].ToString(),
