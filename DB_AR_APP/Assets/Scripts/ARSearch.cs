@@ -11,28 +11,16 @@ public class ARSearch : MonoBehaviour
 {   
     [SerializeField]
     private TMP_InputField searchTextField;
-
-    private TouchScreenKeyboard keyboard;
     public string text;
 
 
     private void Start() {
-    }
-
-    public void OnKeyboard(){
-        Debug.Log("키보드 ON");
-        keyboard = TouchScreenKeyboard.Open(text, TouchScreenKeyboardType.Search);
-    }
-
-    public void OffKeyboard(){
-
+        // 입력 필드 이벤트 추가
+        searchTextField.onSubmit.AddListener(delegate { searchReturnEvent(); });
     }
 
     public void searchTextClear(){
         searchTextField.text = string.Empty;
-        if(keyboard != null){
-            keyboard.text = string.Empty;
-        }
     }
 
     public void searchButtonEvent(){
@@ -63,6 +51,7 @@ public class ARSearch : MonoBehaviour
     }
 
     private void searchReturnEvent(){        
+        #if UNITY_EDITOR
         if (Input.GetKeyDown(KeyCode.Return))
         {
             searchButtonEvent();    // 검색 시작
@@ -71,19 +60,17 @@ public class ARSearch : MonoBehaviour
                 SceneManager.LoadScene("MenuList Scene");
             }
         }
-        
-        if(keyboard != null && keyboard.status == TouchScreenKeyboard.Status.Done){
-
+        #endif
+        #if UNITY_ANDROID
             searchButtonEvent();
             if (SceneManager.GetActiveScene().name == "Main Scene")
             {
                 SceneManager.LoadScene("MenuList Scene");
             }
-        }
+        #endif
     }
 
     private void Update() {
-        // 검색창 조건 검사
         #if UNITY_EDITOR
         searchTextTransToARData(searchTextField.text);   // 검색어를 싱글톤 객체에 전달.
         
@@ -91,10 +78,5 @@ public class ARSearch : MonoBehaviour
         #if UNITY_ANDROID
         searchTextTransToARData(searchTextField.text);   // 검색어를 싱글톤 객체에 전달.
         #endif
-
-        if (searchTextField.text != string.Empty){
-            searchReturnEvent();  // 키 입력을 받는 이벤트
-        }else{
-        }
     }
 }

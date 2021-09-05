@@ -21,6 +21,9 @@ public class ARMenuData : MonoBehaviour {
     [SerializeField]
     private string detailID;   // ID
 
+    [SerializeField]
+    private string prevSceneName;
+
     // 인스턴스 property
     public static ARMenuData Instance
     {
@@ -49,12 +52,19 @@ public class ARMenuData : MonoBehaviour {
 
         // 딕셔너리 형식으로 gameObject 정보를 저장한다.
         Restaurants = new Dictionary<string, ARRestaurant> ();
+        prevSceneName = string.Empty;
     }
 
 
     private void Update() {
     }
 
+    public void setPrevSceneName(string name){
+        prevSceneName = name;
+    }
+    public string getPrevSceneName(){
+        return prevSceneName;
+    }
     // detail id 설정
     public void setDetailID(string id){
         this.detailID = id;
@@ -63,6 +73,10 @@ public class ARMenuData : MonoBehaviour {
     // ID로 DB에 저장된 값을 가져온다.
     public ARRestaurant getDetailItem(){
         return Restaurants[detailID];
+    }
+
+    public string getDetailID(){
+        return this.detailID;
     }
 
     // DB에 저장된 모든 가게

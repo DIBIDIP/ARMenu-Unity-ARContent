@@ -1069,6 +1069,7 @@ GameObject:
   m_Component:
   - component: {fileID: 706334031}
   - component: {fileID: 706334030}
+  - component: {fileID: 706334032}
   m_Layer: 0
   m_Name: MenuDetail
   m_TagString: Untagged
@@ -1093,6 +1094,7 @@ MonoBehaviour:
   allergy: {fileID: 1133952255}
   ingredients: {fileID: 87999614}
   nutrient: {fileID: 175604636}
+  showARButton: {fileID: 1583786715}
   item:
     restaurantName: 
     _id: 
@@ -1127,6 +1129,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &706334032
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 706334029}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7448954178807374390bb3193e52d2f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneName: ARSpawn Scene
 --- !u!1 &707672553
 GameObject:
   m_ObjectHideFlags: 0
@@ -1917,7 +1932,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "AR\uB85C \uBCF4\uAE30(Test)"
+  m_Text: "AR\uB85C \uBCF4\uAE30"
 --- !u!222 &1089060211
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2702,7 +2717,7 @@ GameObject:
   - component: {fileID: 1583786716}
   - component: {fileID: 1583786715}
   m_Layer: 5
-  m_Name: ShowAR
+  m_Name: ShowARButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2771,7 +2786,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1583786716}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 706334032}
+        m_TargetAssemblyTypeName: ChangeScene, Assembly-CSharp
+        m_MethodName: LoadScene
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1583786716
 MonoBehaviour:
   m_ObjectHideFlags: 0

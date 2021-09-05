@@ -51,7 +51,7 @@ public class UIObjectList : MonoBehaviour
 
     private void selectClick(GameObject obj){
         Debug.Log(obj.name);
-        GameObject.Find("AR Session Origin").gameObject.GetComponent<ARPlaceOnPlane>().placeObject = obj;
+        //GameObject.Find("AR Session Origin").gameObject.GetComponent<ARPlaceOnPlane>().placeObject = obj;
     }
 
     // 목록 버튼 이벤트

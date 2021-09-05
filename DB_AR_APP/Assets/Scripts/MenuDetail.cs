@@ -10,15 +10,21 @@ public class MenuDetail : MonoBehaviour
     public Text allergy;
     public Text ingredients;
     public GameObject nutrient;
-    
+
+    [SerializeField]
+    private Button showARButton;
+
     [SerializeField]
     private ARRestaurant item;
+
 
     
     private void Awake() {
         item = GameObject.Find("ARMenuData").GetComponent<ARMenuData>().getDetailItem();
 
         applyDataToContent();
+
+        showARButton.GetComponentInChildren<Text>().text = item.menuName + "AR로 보기";
     }
 
     // DB데이터들을 반영함.

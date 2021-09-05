@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.EventSystems; 
+using UnityEngine.SceneManagement;
 
 public class ARSelectionController : MonoBehaviour
 {
@@ -15,13 +16,12 @@ public class ARSelectionController : MonoBehaviour
     private Camera arCamera;
     [SerializeField]
     private Button ARButton;
-    [SerializeField]
-    private Button DeleteButton;
 
     [SerializeField]
-    private Sprite PlusImage;
+    private Button InfoButton;
+
     [SerializeField]
-    private Sprite InfoImage;
+    private Button DeleteButton;
 
     private Vector2 touchPosition = default;
     private void Awake()
@@ -66,7 +66,7 @@ public class ARSelectionController : MonoBehaviour
         if(selected.Selected){ 
             selected.Selected = false;
             // AR 오브젝트 선택 시 해당하는 오브젝트 정보 버튼 활성화/비활성화
-            ObjectSelected(false);
+            ObjectButtonSelect(false);
             return;
         }
         // 오브젝트가 여러개 있을 시, 하나의 오브젝트만 선택되게 한다
@@ -83,9 +83,8 @@ public class ARSelectionController : MonoBehaviour
         // 선택에 따라 동작
         selected.Selected = true;
         // 선택 시 
-        ARButton.gameObject.SetActive(true);
         // TODO : 오브젝트 삭제 버튼 활성화
-        ObjectSelected(true);
+        ObjectButtonSelect(true);
     }
     // 선택된 오브젝트를 삭제합니다.
     public void DeleteObject(){
@@ -96,18 +95,34 @@ public class ARSelectionController : MonoBehaviour
                 obj.gameObject.SetActive(false);
                 Debug.Log(obj.name + "비활성화됨");
                 deSelectedAll(); // 선택해제
-                ObjectSelected(false);
+                ObjectButtonSelect(false);
             }
         }
-        
+        if(SceneManager.GetActiveScene().name == "ARSpawn Scene"){
+            GetComponent<ARPlaceOnPlane>().setARIsSpawn(false); // 소환 해제 ( 삭제 되었으므로 )
+        }
     }
     
     // 조건에 따라, 버튼이미지, 삭제버튼 비/활성화하는 함수
-    public void ObjectSelected(bool Selected){
-        ChangeButtonImage(Selected);
+    public void ObjectButtonSelect(bool Selected){
+        if(SceneManager.GetActiveScene().name == "ARScan Scene"){
+            InfoObjectButton(Selected);
+            return;
+        }
+        ARObjectButton(Selected);
         DeleteObjectButton(Selected);
+        InfoObjectButton(Selected);
     }
-    
+
+    public void Scan_Select(bool Selected){
+        InfoObjectButton(Selected);
+    }
+
+    public void Spawn_Select(bool Selected){
+        ARObjectButton(!Selected);
+        DeleteObjectButton(Selected);
+        InfoObjectButton(Selected);
+    }
     // 모든 선택을 해제 합니다.
     public void deSelectedAll(){
         // 선택 관련 모두 해제
@@ -128,16 +143,32 @@ public class ARSelectionController : MonoBehaviour
         DeleteButton.gameObject.SetActive(true);
         return true;
     }
-    // UI 버튼의 이미지를 선택에 따라 변경합니다.
-    public bool ChangeButtonImage(bool Selected){
-        // 이미지가 인식되고 있지 않으면 false 반환
-        if (!Selected){
-            // 인식되지 않으면, 기존 Plus 이미지로 변경
-            ARButton.GetComponent<Image>().sprite = PlusImage;
-            return false; 
+
+    private bool ARObjectButton(bool Selected){
+        if(SceneManager.GetActiveScene().name == "ARScan Scene"){
+            return false;
         }
-        // 인식되고 있으면, Info 이미지로 변경
-        ARButton.GetComponent<Image>().sprite = InfoImage;
+        // 선택되지 않으면 비활성화
+        if(!Selected){
+            ARButton.gameObject.SetActive(false);
+            return false;
+        }
+        // 선택되었으면 활성화
+        ARButton.gameObject.SetActive(true);
         return true;
     }
+    
+
+    // 오브젝트 정보 버튼을 비/활성화 합니다
+    public bool InfoObjectButton(bool Selected){
+        // 선택되지 않으면 비활성화
+        if(!Selected){
+            InfoButton.gameObject.SetActive(false);
+            return false;
+        }
+        // 선택되었으면 활성화
+        InfoButton.gameObject.SetActive(true);
+        return true;
+    }
+
 }

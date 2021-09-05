@@ -11,13 +11,16 @@ public class ARTrackedImg : MonoBehaviour
     private List<GameObject> trackedPrefabs; // 이미지를 인식했을 때 출력되는 프리팹 목록
 
     [SerializeField]
-    private GameObject objPool;
-    // 이미지를 인식했을 떄 출력되는 오브젝트 목록
+    private GameObject objPool; // 이미지를 인식했을 떄 출력되는 오브젝트 목록
+    
     private Dictionary<string, GameObject> spawnedObjects = new Dictionary<string, GameObject>();
     private ARTrackedImageManager trackedImageManager;
 
     [SerializeField]
-    private Button arButton; // UI 버튼
+    private TMPro.TMP_Text notice_qr;
+
+    [SerializeField]
+    private TMPro.TMP_Text notice2;
 
     private void Awake()
     {
@@ -38,6 +41,11 @@ public class ARTrackedImg : MonoBehaviour
             clone.SetActive(false);                 // 오브젝트 비활성화
             spawnedObjects.Add(clone.name, clone);  // 딕셔너리에 저장
         }
+
+        notice_qr.gameObject.SetActive(true);
+
+        // 현재 씬 매니저 Scan ID None 으로 초기값 설정
+        GameObject.Find("Manager").GetComponent<ChangeScene>().setScanSceneIDNone(false);
     }
 
     private void OnEnable() {
@@ -53,7 +61,8 @@ public class ARTrackedImg : MonoBehaviour
         foreach(var trackedImage in eventArgs.added){
             Debug.Log("이미지 트래킹 시작");
             UpdateImage(trackedImage);
-            // TODO: 이미지 트래킹 시, ARButton 비활성화 한다.
+
+            notice_qr.gameObject.SetActive(false);
         }
 
         // 카메라에 이미지가 인식되어 업데이트되고 있을 때 (프레임당 갱신함)
@@ -69,7 +78,8 @@ public class ARTrackedImg : MonoBehaviour
             // TODO: 해제 시에 AR Obeject Seleted 또한 해제해야함, ARButton 활성화
             // 트래킹 해제 시
             gameObject.GetComponent<ARSelectionController>().deSelectedAll();
-            arButton.gameObject.SetActive(true);
+            gameObject.GetComponent<ARSelectionController>().Scan_Select(false);    // 강제 비활성화
+            notice_qr.gameObject.SetActive(true);
         }
     }
 
@@ -88,10 +98,24 @@ public class ARTrackedImg : MonoBehaviour
             // 활성화
             trackedObject.SetActive(true);
 
-            // UI 버튼 정보 이미지로 변경
-            // gameObject.GetComponent<ARSelectionController>().ChangeButtonImage(true);
-        }else{
+            notice_qr.gameObject.SetActive(false);
+            
+            // 싱글톤 객체에 넘기기
+            if(trackedObject.GetComponent<ARScanObjectInfo>().ID != string.Empty){
+                string trackedObjID = trackedObject.GetComponent<ARScanObjectInfo>().ID;
+                GameObject.Find("ARMenuData").GetComponent<ARMenuData>().setDetailID(trackedObjID);
+                GameObject.Find("Manager").GetComponent<ChangeScene>().setScanSceneIDNone(false);
+            }
+            else {
+                // ID가 없는 오브젝트를 스캔했다면 정보 클릭을 실행하는 Load Scene에 넘긴다 아이디를
+                GameObject.Find("Manager").GetComponent<ChangeScene>().setScanSceneIDNone(true);
+            }
+        }else {
             trackedObject.SetActive(false);
+            notice_qr.gameObject.SetActive(true);
+            // 강제 비활성화
+            gameObject.GetComponent<ARSelectionController>().deSelectedAll();
+            // gameObject.GetComponent<ARSelectionController>().Scan_Select(false);    // 강제 비활성화
         }
     }
 }
