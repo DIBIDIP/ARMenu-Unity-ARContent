@@ -25,7 +25,8 @@ public class LoadingSceneManager : MonoBehaviour
             return;
         }
         notice.GetComponent<TextAnimation>().setAni(false);
-        StartCoroutine(testLoad());
+        StartCoroutine(Load());
+
     }
 
     private void Update() {
@@ -50,16 +51,16 @@ public class LoadingSceneManager : MonoBehaviour
         #endif
     }
 
-    IEnumerator testLoad(){
+    IEnumerator Load(){
         Debug.Log("로딩 시작");
 
-        notice.text = "불러오는 중";
+        notice.text = "Loading";
         notice.gameObject.SetActive(true);
         // API Load Data
         bool apiLoad = GameObject.Find("APIManager").GetComponent<LoadAPI>().IsSuccesLoadData;
         while(!apiLoad){
             apiLoad = GameObject.Find("APIManager").GetComponent<LoadAPI>().IsSuccesLoadData;
-            progressBar.fillAmount += 0.005f;
+            progressBar.fillAmount = GameObject.Find("APIManager").GetComponent<LoadAPI>().getProgress();
             yield return new WaitForSeconds(0.1f);
         }
 

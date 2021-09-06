@@ -11,6 +11,9 @@ public class LoadAPI : MonoBehaviour
     [SerializeField]
     private string URL = "http://146.56.159.134:3000";
 
+    [SerializeField]
+    private float loadProgress;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -31,20 +34,33 @@ public class LoadAPI : MonoBehaviour
         return JsonUtility.FromJson<T>(json);
     }
 
+    public float getProgress(){
+        return loadProgress;
+    }
+
     // HTTP 통신을 통해 Json 받아오기
-    IEnumerator LoadData() {
+    public IEnumerator LoadData() {
         string getDataURL = URL + "/api/menus/all";
         // HTTP Get 요청 보내기
         using(UnityWebRequest request = UnityWebRequest.Get(getDataURL)) 
         {
-            yield return request.SendWebRequest();    // 요청 보내기
-
+            var asyncOperation = request.SendWebRequest();    // 요청 보내기
+            while (!asyncOperation.isDone){
+                Debug.Log(request.downloadProgress);
+                loadProgress = request.downloadProgress;
+                yield return null;
+            }
+            if(request.error != null){
+                Debug.LogError("API 통신 중 에러 발생", this);
+                yield break;
+            }
             if (request.isNetworkError || request.isHttpError){ // 불러오기 실패 
                 Debug.Log("요청 실패 : " + request.error);
             }else{  
                 IsSuccesLoadData = true;
                 resultJson = System.Text.Encoding.UTF8.GetString(request.downloadHandler.data);  
                 //resultJson = request.downloadHandler.text;
+
                 // 싱글톤 객체로 넘긴다.
                 
                 GameObject.Find("ARMenuData").GetComponent<ARMenuData>().LitJsonToARContent(resultJson);
