@@ -1,4 +1,5 @@
 import React from 'react';
+import mainlogo from '../../../../assets/images/mainlogo.png';
 
 function MainImage(props) {
     return (
@@ -15,10 +16,17 @@ function MainImage(props) {
             width: '100%',
             position: 'relative'
         }}>
+            <a href="/">
+                <img src={mainlogo}/> 
+            </a>
             <div>
                 <div style={{ position: 'absolute', maxWidth: '500px', bottom: '2rem', marginLeft: '2rem' }}>
-                    <h2 style={{ color: 'black' }}>Menu_Name(메뉴이름)</h2>
-                    <p style={{ color: 'black', fontSize: '1rem' }}> Allergy_Information(알러지 정보)</p>
+                    <h2 style={{ color: 'black' }}>[MenuName]</h2>
+                    <p style={{ color: 'black', fontSize: '1rem' }}> [Allergies information]</p>
+                    {/* 아래 소스와 같이 props를 통해서 받아와야하는데 api 부분을 수정하지 못해서 그대로 문제.. */}
+
+
+
                     {/* <h2 style={{ color: 'white' }}>  {props.title} </h2>
                     <p style={{ color: 'white', fontSize: '1rem' }}> {props.text}</p> */}
                     {/* props.title : mainImage 의 title, props.text : mainImage 의 text */}

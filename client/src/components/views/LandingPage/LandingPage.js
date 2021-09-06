@@ -9,66 +9,66 @@ import { Row } from 'antd';
 function LandingPage() {
 
 
-    const [Movies, setMovies] = useState([])
-    const [MainMovieImage, setMainMovieImage] = useState(null)
+    const [Menus, setMenus] = useState([])
+    const [MainMenuImage, setMainMenuImage] = useState(null)
     const [CurrentPage, setCurrentPage] = useState(0)
 
     useEffect(() => {
-        const endpoint = `${API_URL}movie/popular?api_key=${API_KEY}&language=en-US&page=1`;
-        fetchMovies(endpoint)
+        const endpoint = `${API_URL}movie/popular?api_key=${API_KEY}&language=en-US&page=1`;//해당 부분 API_URL/API_KEY(많이 사용하여 config.js 파일에 선언해둠) 과 movie/popular? 등 그외의 소스를 규리가 작성해놓은 파일의 주소로 변환해서 받아와야하는데 어떻게 해야할지를 모르겠습니다 ㅠㅠ 
+        fetchMenus(endpoint)
 
     }, [])
 
 
-    const fetchMovies = (endpoint) => {
+    const fetchMenus = (endpoint) => {
         fetch(endpoint)
             .then(response => response.json())
             .then(response => {
                 console.log(response)
-                setMovies([...Movies, ...response.results])
-                setMainMovieImage(response.results[0])
+                setMenus([...Menus, ...response.results])
+                setMainMenuImage(response.results[0])
                 setCurrentPage(response.page)
             })
     }
 
     const loadMoreItems = () => {
 
-        const endpoint = `${API_URL}movie/popular?api_key=${API_KEY}&language=en-US&page=${CurrentPage + 1}`;
-        fetchMovies(endpoint)
+        const endpoint = `${API_URL}movie/popular?api_key=${API_KEY}&language=en-US&page=${CurrentPage + 1}`;//해당 부분 API_URL/API_KEY(많이 사용하여 config.js 파일에 선언해둠) 과 movie/popular? 등 그외의 소스를 규리가 작성해놓은 파일의 주소로 변환해서 받아와야하는데 어떻게 해야할지를 모르겠습니다 ㅠㅠ
+        fetchMenus(endpoint)
 
     }
 
 
     return (
         <div style={{ width: '100%', margin: '0' }}>
-
             {/* Main Image */}
-            {MainMovieImage &&
+            {MainMenuImage &&
                 <MainImage
-                    image={`${IMAGE_BASE_URL}w1280${MainMovieImage.backdrop_path}`}
-                    title={MainMovieImage.original_title}
-                    text={MainMovieImage.overview}
+                    image={`${IMAGE_BASE_URL}w1280${MainMenuImage.backdrop_path}`}//해당 부분 IMAGE_BASE_URL(많이 사용하여 config.js 파일에 선언해둠) 과 movie/popular? 등 그외의 소스를 규리가 작성해놓은 파일의 주소로 변환해서 받아와야하는데 어떻게 해야할지를 모르겠습니다 ㅠㅠ
+                    title={MainMenuImage.original_title}//title , text 또한 기존에 받아왔던 영화정보 api 사이트에서는 제목과 설명을 original_title과 overview로 설정해두었는데 어떻게 변경해야하는지
+                    text={MainMenuImage.overview}
                 />
             }
-
+            
+7
 
             <div style={{ width: '85%', margin: '1rem auto' }}>
 
-                <h2>Latest Registered Menus (등록된 메뉴)</h2>
+                <h2>AR_DISH</h2>
                 <hr />
 
                 {/* Movie Grid Cards */}
 
                 <Row gutter={[16, 16]} >
 
-                    {Movies && Movies.map((movie, index) => (
+                    {Menus && Menus.map((menu, index) => (
                         <React.Fragment key={index}>
                             <GridCards
                                 landingPage
-                                image={movie.poster_path ?
-                                    `${IMAGE_BASE_URL}w500${movie.poster_path}` : null}
-                                movieId={movie.id}
-                                movieName={movie.original_title}
+                                image={menu.poster_path ?
+                                    `${IMAGE_BASE_URL}w500${menu.poster_path}` : null}//위와동일
+                                menuId={menu.id}//위와동일
+                                menuName={menu.original_title}//위와동일
                             />
                         </React.Fragment>
                     ))}
