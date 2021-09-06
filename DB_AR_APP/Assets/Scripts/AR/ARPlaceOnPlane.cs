@@ -89,6 +89,10 @@ public class ARPlaceOnPlane : MonoBehaviour
         ARIsSpawn = IsSpawn;
     }
 
+    public bool getARIsSpawn(){
+        return this.ARIsSpawn;
+    }
+
     public void PlaceObjectByButton(){
         PlaceCenterObject();
     }

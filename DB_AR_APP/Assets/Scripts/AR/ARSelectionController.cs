@@ -109,9 +109,10 @@ public class ARSelectionController : MonoBehaviour
             InfoObjectButton(Selected);
             return;
         }
-        ARObjectButton(Selected);
+        
+        ARObjectButton(!Selected);
         DeleteObjectButton(Selected);
-        InfoObjectButton(Selected);
+        InfoObjectButton(Selected);    
     }
 
     public void Scan_Select(bool Selected){
