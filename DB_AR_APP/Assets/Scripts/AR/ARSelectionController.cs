@@ -82,6 +82,8 @@ public class ARSelectionController : MonoBehaviour
         }
         // 선택에 따라 동작
         selected.Selected = true;
+        
+        Debug.Log(selected.name + "선택됨");
         // 선택 시 
         // TODO : 오브젝트 삭제 버튼 활성화
         ObjectButtonSelect(true);
@@ -106,13 +108,10 @@ public class ARSelectionController : MonoBehaviour
     // 조건에 따라, 버튼이미지, 삭제버튼 비/활성화하는 함수
     public void ObjectButtonSelect(bool Selected){
         if(SceneManager.GetActiveScene().name == "ARScan Scene"){
-            InfoObjectButton(Selected);
+            Scan_Select(Selected);
             return;
         }
-        
-        ARObjectButton(!Selected);
-        DeleteObjectButton(Selected);
-        InfoObjectButton(Selected);    
+        Spawn_Select(Selected);
     }
 
     public void Scan_Select(bool Selected){

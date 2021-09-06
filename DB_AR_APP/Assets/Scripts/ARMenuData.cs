@@ -70,6 +70,10 @@ public class ARMenuData : MonoBehaviour {
         this.detailID = id;
     }
 
+    public string findByIdAndImage(string id){
+        return Restaurants[id].imgUrl;
+    }
+
     // ID로 DB에 저장된 값을 가져온다.
     public ARRestaurant getDetailItem(){
         return Restaurants[detailID];

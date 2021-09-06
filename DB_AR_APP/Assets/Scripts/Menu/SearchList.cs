@@ -62,7 +62,8 @@ public class SearchList : MonoBehaviour
                 btn.GetComponentsInChildren<Text>()[0].text = data.Current.restaurantName;
                 btn.GetComponentsInChildren<Text>()[1].text = data.Current.description;
                 // TODO : Image 추가하기
-                //btn.GetComponentsInChildren<Image>()
+                // 아이디 넘김
+                btn.GetComponentInChildren<MenuItemImage>().setItemID(data.Current._id);
                 var temp = data.Current;   // 임시 저장
                 // 클릭이벤트 추가
                 btn.onClick.AddListener(() => selectClick(temp));
