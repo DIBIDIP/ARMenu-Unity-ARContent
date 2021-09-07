@@ -70,8 +70,12 @@ public class ARMenuData : MonoBehaviour {
         this.detailID = id;
     }
 
-    public string findByIdAndImage(string id){
-        return Restaurants[id].imgUrl;
+    public Sprite getImageSprite(string id){
+        return Restaurants[id].imageSprite;
+    }
+
+    public string getImageData(string id){
+        return Restaurants[id].getImgData();
     }
 
     // ID로 DB에 저장된 값을 가져온다.
@@ -150,6 +154,16 @@ public class ARMenuData : MonoBehaviour {
         return JsonConvert.DeserializeObject<T>(json);
     }
 
+    // 이미지 변환
+    private Sprite SpriteFromBase64(string base64String){
+        byte[] bytes = System.Convert.FromBase64String(base64String);
+
+        Texture2D texture2D = new Texture2D(1, 1);
+        texture2D.LoadImage(bytes);
+
+        return Sprite.Create(texture2D, new Rect(0, 0, texture2D.width, texture2D.height), Vector2.zero);
+    }
+
     public bool LitJsonToARContent(string json){
         if(json == null){
             return false;
@@ -163,13 +177,17 @@ public class ARMenuData : MonoBehaviour {
             foreach (var word in data[i]["allergies"]){
                 allerg += word.ToString();
             }
+            
+            // 스프라이트 추가
+            Sprite sprite = SpriteFromBase64(data[i]["imgUrl"].ToString());
+
             // ID, DB 정보로 저장
             Restaurants.Add(data[i]["_id"].ToString() ,new ARRestaurant(
                 data[i]["_id"].ToString(), data[i]["restaurantName"].ToString(), data[i]["menuName"].ToString(), data[i]["description"].ToString(), allerg
                 , data[i]["ingredients"].ToString(), data[i]["nutrients"]["nt_calories"].ToString(),  data[i]["nutrients"]["nt_totalCarbohydrate"].ToString(), data[i]["nutrients"]["nt_totalSugars"].ToString(),
                 data[i]["nutrients"]["nt_protein"].ToString(), data[i]["nutrients"]["nt_totalFat"].ToString(), data[i]["nutrients"]["nt_SaturatedFat"].ToString(),
                 data[i]["nutrients"]["nt_transFat"].ToString(), data[i]["nutrients"]["nt_cholesterol"].ToString(), data[i]["nutrients"]["nt_sodium"].ToString(), data[i]["cookingTime"].ToString(),
-                data[i]["releaseData"].ToString(), data[i]["fileUrl"].ToString(), data[i]["imgUrl"].ToString()
+                data[i]["releaseData"].ToString(), data[i]["fileUrl"].ToString(), data[i]["imgUrl"].ToString(), sprite
             ));
         }
 

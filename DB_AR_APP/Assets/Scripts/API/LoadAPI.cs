@@ -46,19 +46,19 @@ public class LoadAPI : MonoBehaviour
         {
             var asyncOperation = request.SendWebRequest();    // 요청 보내기
             while (!asyncOperation.isDone){
-                Debug.Log(request.downloadProgress);
+                //Debug.Log(request.downloadProgress);
                 loadProgress = request.downloadProgress;
                 yield return null;
             }
+
             if(request.error != null){
                 Debug.LogError("API 통신 중 에러 발생", this);
                 yield break;
             }
-            if (request.isNetworkError || request.isHttpError){ // 불러오기 실패 
-                Debug.Log("요청 실패 : " + request.error);
-            }else{  
+            else{  
                 IsSuccesLoadData = true;
-                resultJson = System.Text.Encoding.UTF8.GetString(request.downloadHandler.data);  
+                resultJson = System.Text.Encoding.UTF8.GetString(request.downloadHandler.data);
+                
                 //resultJson = request.downloadHandler.text;
 
                 // 싱글톤 객체로 넘긴다.

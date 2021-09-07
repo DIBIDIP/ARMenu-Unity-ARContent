@@ -19,9 +19,6 @@ public class ARTrackedImg : MonoBehaviour
     [SerializeField]
     private TMPro.TMP_Text notice_qr;
 
-    [SerializeField]
-    private TMPro.TMP_Text notice2;
-
     private void Awake()
     {
         for (int i = 0; i < objPool.transform.childCount; i++){
@@ -95,7 +92,7 @@ public class ARTrackedImg : MonoBehaviour
     private void UpdateImage(ARTrackedImage trackedImage)
     {
         string name = trackedImage.referenceImage.name;
-        GameObject trackedObject =spawnedObjects[name];
+        GameObject trackedObject = spawnedObjects[name];
         
         // 트래킹된 오브젝트의 상태를 가져온다.
         bool Selected = trackedObject.GetComponent<ARObject>().Selected;
@@ -103,7 +100,7 @@ public class ARTrackedImg : MonoBehaviour
 
         // 이미지의 추적 상태가 추적중(Tracking) 일 때
         if ( trackedImage.trackingState == TrackingState.Tracking){
-
+            Debug.Log(trackedImage.name + " 추적 ");
             // 이미지 위치로 계속 따라다님
             trackedObject.transform.position = trackedImage.transform.position;
             trackedObject.transform.rotation = trackedImage.transform.rotation;

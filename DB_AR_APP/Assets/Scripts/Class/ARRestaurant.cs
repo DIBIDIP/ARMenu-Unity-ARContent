@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace ARContent{
     [System.Serializable]
@@ -26,10 +27,16 @@ namespace ARContent{
         public string cholesterol;
         public string sodium;
 
+        public Sprite imageSprite;
+
+        public string getImgData(){
+            return this.imgUrl;
+        }
+
         public ARRestaurant(string id, string resName, string menuName, string desc, string aller, string ingre, 
                             string cal, string totalCar, string totalSu, string pro, string totalFat,
                             string sature, string traFat, string chol, string sodium, string cookingTime
-                            , string reldata, string file, string img)
+                            , string reldata, string file, string img, Sprite sprite)
             {
                 this._id = id;
                 this.restaurantName = resName;
@@ -50,6 +57,7 @@ namespace ARContent{
                 this.transFat = traFat;
                 this.cholesterol = chol;
                 this.sodium = sodium;
+                this.imageSprite = sprite;  // 스프라이트 이미지 추가
             }
     }
 }

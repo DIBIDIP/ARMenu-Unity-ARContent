@@ -11,6 +11,8 @@ public class MenuDetail : MonoBehaviour
     public Text ingredients;
     public GameObject nutrient;
 
+    public Image image;
+
     [SerializeField]
     private Button showARButton;
 
@@ -24,7 +26,7 @@ public class MenuDetail : MonoBehaviour
 
         applyDataToContent();
 
-        showARButton.GetComponentInChildren<Text>().text = item.menuName + "AR로 보기";
+        showARButton.GetComponentInChildren<Text>().text = item.menuName + " AR";
     }
 
     // DB데이터들을 반영함.
@@ -33,6 +35,7 @@ public class MenuDetail : MonoBehaviour
         menuDesc.text = item.description;
         allergy.text = item.allergies;
         ingredients.text = item.ingredients;
+        image.sprite = item.imageSprite;
 
         // 영양성분
         nutrient.GetComponentsInChildren<Text>()[0].text = item.calories + "cal";
