@@ -1,0 +1,6 @@
+8ee7a3814b6b4157881c30d5bd9d9bce|C:\projects\db\DB_AR_APP\Assets\Resource\QR\foodQR1.png|0.1
+021e4b0cd379488e9fedafd65560bde8|C:\projects\db\DB_AR_APP\Assets\Resource\QR\gachicken.png|0.1
+ec60d30f1ee647e690885642d377e043|C:\projects\db\DB_AR_APP\Assets\Resource\QR\dbgookbab.png|0.1
+796b980542ba4cbf878203047b168413|C:\projects\db\DB_AR_APP\Assets\Resource\QR\mcburger.png|0.1
+744181f2c9ca4f2aa985e69b0623f49e|C:\projects\db\DB_AR_APP\Assets\Resource\QR\incredibleBurger.png|0.1
+537ffaa162514dd2884e817f97138dd4|C:\projects\db\DB_AR_APP\Assets\Resource\QR\subwaysand.png|0.1

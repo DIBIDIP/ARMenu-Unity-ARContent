@@ -17,6 +17,12 @@ public class LoadAPI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // 화면이 꺼지지 않도록 설정
+        Screen.sleepTimeout = SleepTimeout.NeverSleep;
+
+        // 디바이스 설정에 맞추어 화면이 꺼지도록 처리 
+        //Screen.sleepTimeout = SleepTimeout.SystemSetting;
+
         if(Application.internetReachability == NetworkReachability.NotReachable){
             Debug.LogError("인터넷 연결 안됨.");
         }else{
