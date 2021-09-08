@@ -1,0 +1,182 @@
+[api-updater (non-obsolete-error-filter)] 2021-07-13 PM 4:58:18 : Starting C:/Program Files/2020.3.12f1/Editor/Data/Tools/ScriptUpdater/APIUpdater.NonObsoleteApiUpdaterDetector.exe
+[api-updater (non-obsolete-error-filter)] 
+----------------------------------
+jit/startup time      : 483.673ms
+moved types parse time: 112ms
+candidates parse time : 2ms
+C# parse time         : 502ms
+candidates check time : 67ms
+console write time    : 1ms
+
+[api-updater (non-obsolete-error-filter)] 2021-07-16 PM 7:07:22 : Starting C:/Program Files/2020.3.12f1/Editor/Data/Tools/ScriptUpdater/APIUpdater.NonObsoleteApiUpdaterDetector.exe
+[api-updater (non-obsolete-error-filter)] 
+----------------------------------
+jit/startup time      : 863.6473ms
+moved types parse time: 114ms
+candidates parse time : 3ms
+C# parse time         : 630ms
+candidates check time : 120ms
+console write time    : 1ms
+
+[api-updater (non-obsolete-error-filter)] 2021-07-16 PM 7:09:13 : Starting C:/Program Files/2020.3.12f1/Editor/Data/Tools/ScriptUpdater/APIUpdater.NonObsoleteApiUpdaterDetector.exe
+[api-updater (non-obsolete-error-filter)] 
+----------------------------------
+jit/startup time      : 159.935ms
+moved types parse time: 98ms
+candidates parse time : 2ms
+C# parse time         : 362ms
+candidates check time : 76ms
+console write time    : 1ms
+
+[api-updater (non-obsolete-error-filter)] 2021-07-27 PM 10:33:22 : Starting C:/Program Files/2020.3.12f1/Editor/Data/Tools/ScriptUpdater/APIUpdater.NonObsoleteApiUpdaterDetector.exe
+[api-updater (non-obsolete-error-filter)] 
+----------------------------------
+jit/startup time      : 585.3284ms
+moved types parse time: 133ms
+candidates parse time : 4ms
+C# parse time         : 540ms
+candidates check time : 98ms
+console write time    : 1ms
+
+[api-updater (non-obsolete-error-filter)] 2021-07-28 AM 1:41:05 : Starting C:/Program Files/2020.3.12f1/Editor/Data/Tools/ScriptUpdater/APIUpdater.NonObsoleteApiUpdaterDetector.exe
+[api-updater (non-obsolete-error-filter)] 
+----------------------------------
+jit/startup time      : 245.344ms
+moved types parse time: 106ms
+candidates parse time : 23ms
+C# parse time         : 478ms
+candidates check time : 932ms
+console write time    : 4ms
+
+[api-updater (non-obsolete-error-filter)] 2021-07-28 AM 2:09:04 : Starting C:/Program Files/2020.3.12f1/Editor/Data/Tools/ScriptUpdater/APIUpdater.NonObsoleteApiUpdaterDetector.exe
+[api-updater (non-obsolete-error-filter)] 
+----------------------------------
+jit/startup time      : 166.5552ms
+moved types parse time: 107ms
+candidates parse time : 9ms
+C# parse time         : 497ms
+candidates check time : 871ms
+console write time    : 1ms
+
+[api-updater (non-obsolete-error-filter)] 2021-08-02 PM 6:03:30 : Starting C:/Program Files/2020.3.12f1/Editor/Data/Tools/ScriptUpdater/APIUpdater.NonObsoleteApiUpdaterDetector.exe
+[api-updater (non-obsolete-error-filter)] 
+----------------------------------
+jit/startup time      : 214.6671ms
+moved types parse time: 91ms
+candidates parse time : 2ms
+C# parse time         : 457ms
+candidates check time : 73ms
+console write time    : 1ms
+
+[api-updater (non-obsolete-error-filter)] 2021-08-02 PM 6:09:09 : Starting C:/Program Files/2020.3.12f1/Editor/Data/Tools/ScriptUpdater/APIUpdater.NonObsoleteApiUpdaterDetector.exe
+[api-updater (non-obsolete-error-filter)] 
+----------------------------------
+jit/startup time      : 133.2419ms
+moved types parse time: 94ms
+candidates parse time : 2ms
+C# parse time         : 371ms
+candidates check time : 84ms
+console write time    : 0ms
+
+[api-updater (non-obsolete-error-filter)] 2021-08-02 PM 6:09:09 : Starting C:/Program Files/2020.3.12f1/Editor/Data/Tools/ScriptUpdater/APIUpdater.NonObsoleteApiUpdaterDetector.exe
+[api-updater (non-obsolete-error-filter)] 
+----------------------------------
+jit/startup time      : 151.6375ms
+moved types parse time: 123ms
+candidates parse time : 3ms
+C# parse time         : 377ms
+candidates check time : 76ms
+console write time    : 1ms
+
+[api-updater (non-obsolete-error-filter)] 2021-08-15 PM 6:47:51 : Starting C:/Program Files/2020.3.12f1/Editor/Data/Tools/ScriptUpdater/APIUpdater.NonObsoleteApiUpdaterDetector.exe
+[api-updater (non-obsolete-error-filter)] 
+----------------------------------
+jit/startup time      : 738.8122ms
+moved types parse time: 246ms
+candidates parse time : 3ms
+C# parse time         : 700ms
+candidates check time : 120ms
+console write time    : 4ms
+
+<<<<<<< HEAD
+[api-updater (non-obsolete-error-filter)] 2021-09-02 PM 8:39:32 : Starting C:/Program Files/2020.3.12f1/Editor/Data/Tools/ScriptUpdater/APIUpdater.NonObsoleteApiUpdaterDetector.exe
+[api-updater (non-obsolete-error-filter)] 
+----------------------------------
+jit/startup time      : 1017.5336ms
+moved types parse time: 106ms
+candidates parse time : 2ms
+C# parse time         : 493ms
+candidates check time : 63ms
+console write time    : 2ms
+
+[api-updater (non-obsolete-error-filter)] 2021-09-02 PM 10:07:25 : Starting C:/Program Files/2020.3.12f1/Editor/Data/Tools/ScriptUpdater/APIUpdater.NonObsoleteApiUpdaterDetector.exe
+[api-updater (non-obsolete-error-filter)] 
+----------------------------------
+jit/startup time      : 162.3045ms
+moved types parse time: 106ms
+candidates parse time : 2ms
+C# parse time         : 423ms
+candidates check time : 106ms
+console write time    : 0ms
+=======
+[api-updater (non-obsolete-error-filter)] 2021-09-02 PM 7:32:02 : Starting C:/Program Files/Unity/Hub/Editor/2020.3.12f1/Editor/Data/Tools/ScriptUpdater/APIUpdater.NonObsoleteApiUpdaterDetector.exe
+[api-updater (non-obsolete-error-filter)] 
+----------------------------------
+jit/startup time      : 258.7267ms
+moved types parse time: 105ms
+candidates parse time : 4ms
+C# parse time         : 511ms
+candidates check time : 42ms
+console write time    : 1ms
+>>>>>>> 85deb82b6ae6c5c29a2fd1a8c01e7195c2d5a190
+
+[api-updater (non-obsolete-error-filter)] 2021-09-02 PM 10:42:37 : Starting C:/Program Files/2020.3.12f1/Editor/Data/Tools/ScriptUpdater/APIUpdater.NonObsoleteApiUpdaterDetector.exe
+[api-updater (non-obsolete-error-filter)] 
+----------------------------------
+jit/startup time      : 169.172ms
+moved types parse time: 101ms
+candidates parse time : 2ms
+C# parse time         : 443ms
+candidates check time : 60ms
+console write time    : 1ms
+
+[api-updater (non-obsolete-error-filter)] 2021-09-05 PM 7:04:12 : Starting C:/Program Files/2020.3.12f1/Editor/Data/Tools/ScriptUpdater/APIUpdater.NonObsoleteApiUpdaterDetector.exe
+[api-updater (non-obsolete-error-filter)] 
+----------------------------------
+jit/startup time      : 143.0431ms
+moved types parse time: 65ms
+candidates parse time : 1ms
+C# parse time         : 377ms
+candidates check time : 68ms
+console write time    : 0ms
+
+[api-updater (non-obsolete-error-filter)] 2021-09-05 PM 8:38:37 : Starting C:/Program Files/2020.3.12f1/Editor/Data/Tools/ScriptUpdater/APIUpdater.NonObsoleteApiUpdaterDetector.exe
+[api-updater (non-obsolete-error-filter)] 
+----------------------------------
+jit/startup time      : 243.2955ms
+moved types parse time: 73ms
+candidates parse time : 1ms
+C# parse time         : 368ms
+candidates check time : 72ms
+console write time    : 3ms
+
+[api-updater (non-obsolete-error-filter)] 2021-09-05 PM 9:38:15 : Starting C:/Program Files/2020.3.12f1/Editor/Data/Tools/ScriptUpdater/APIUpdater.NonObsoleteApiUpdaterDetector.exe
+[api-updater (non-obsolete-error-filter)] 
+----------------------------------
+jit/startup time      : 132.7626ms
+moved types parse time: 72ms
+candidates parse time : 2ms
+C# parse time         : 294ms
+candidates check time : 59ms
+console write time    : 0ms
+
+[api-updater (non-obsolete-error-filter)] 2021-09-05 PM 11:04:42 : Starting C:/Program Files/2020.3.12f1/Editor/Data/Tools/ScriptUpdater/APIUpdater.NonObsoleteApiUpdaterDetector.exe
+[api-updater (non-obsolete-error-filter)] 
+----------------------------------
+jit/startup time      : 216.3608ms
+moved types parse time: 75ms
+candidates parse time : 1ms
+C# parse time         : 373ms
+candidates check time : 61ms
+console write time    : 3ms
+
