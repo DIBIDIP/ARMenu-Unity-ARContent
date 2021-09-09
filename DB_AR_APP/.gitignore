@@ -12,6 +12,8 @@ UnityGenerated/
  
 Library/
  
+Logs/
+
  
  
 # ===================================== #
@@ -26,10 +28,14 @@ ExportedObj/
  
 *.userprefs
  
+*.csproj
+ 
 *.pidb
  
 *.suo
-
+ 
+*.sln
+ 
 *.user
  
 *.unityproj
@@ -59,6 +65,13 @@ Icon?
 ehthumbs.db
  
 Thumbs.db
+ 
+GraphicsSettings.asset
+ 
+ProjectSettings.asset
+ 
+ProjectVersion.txt
 
+.log
 
 *.apk
